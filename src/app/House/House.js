@@ -701,62 +701,73 @@ const PortXFolio = () => {
   };
 
   // Projects data
-  const projects = [
-    {
-      title: "Artifact Fetching For Dummies",
-      description:
-        "An FPS game with horror and parkour elements built with Unity.",
-      image:
-        "https://img.itch.zone/aW1nLzE4Nzk0Njg5LnBuZw==/original/FsHEyg.png",
-      link: "https://gregrsea-975.itch.io/artifact-fetching-for-dummies",
-    },
-    {
-      title: "JawaraDM Landing Page",
-      description:
-        "Modern responsive landing page built with React and Tailwind CSS.",
-      image: "https://placehold.co/600x400/EEE/31343C",
-      link: "https://jawaradm.com/",
-    },
-    {
-      title: "Starfall (Coming Soon)",
-      description:
-        "Sci-fi roguelike shooter inspired by Risk of Rain 2 and No Man's Sky.",
-      image: "https://via.placeholder.com/300x200?text=Starfall+Game",
-      link: "#",
-    },
-    {
-      title: "End",
-      description:
-        "A sinister coliseum where warriors fight for false freedom.",
-      image:
-        "https://img.itch.zone/aW1nLzE5NjM4NTM0LmpwZw==/315x250%23c/YRDn7Q.jpg",
-      link: "https://gregrsea-975.itch.io/end",
-    },
-    {
-      title: "Currency Converter",
-      description:
-        "A web that you can convert any currency",
-      image:
-        "https://img.itch.zone/aW1nLzE5NjM4NTM0LmpwZw==/315x250%23c/YRDn7Q.jpg",
-      link: "https://rafiadnan.my.id/converter",
-    },
-    {
-      title: "Url To Qr Converter",
-      description:
-        "A web that you can convert any Url To Qr",
-      image:
-        "https://placehold.co/600x400/EEE/31343C",
-      link: "https://gregrsea-975.itch.io/end",
-    },
-    {
-      title: "Weather",
-      description:
-        "A web that you can see how it's the weather",
-      image:
-        "https://placehold.co/600x400/EEE/31343C",
-      link: "https://gregrsea-975.itch.io/end",
-    },
-  ];
+const projects = [
+  {
+    title: "Artifact Fetching For Dummies",
+    description:
+      "FPS horror‑parkour built in Unity.",
+    image:
+      "https://img.itch.zone/aW1nLzE4Nzk0Njg5LnBuZw==/original/FsHEyg.png",
+    link: "https://gregrsea-975.itch.io/artifact-fetching-for-dummies",
+  },
+  {
+    title: "JawaraDM Landing Page",
+    description:
+      "Modern responsive landing page (React + Tailwind).",
+    image: "https://placehold.co/600x400/EEE/31343C?text=JawaraDM",
+    link: "https://jawaradm.com/",
+  },
+  {
+    title: "Starfall (Coming Soon)",
+    description:
+      "Sci‑fi roguelike shooter inspired by Risk of Rain 2 & No Man's Sky.",
+    image: "https://via.placeholder.com/300x200?text=Starfall+Game",
+    link: "#",
+  },
+  {
+    title: "End",
+    description:
+      "A sinister coliseum where warriors fight for false freedom.",
+    image:
+      "https://img.itch.zone/aW1nLzE5NjM4NTM0LmpwZw==/315x250%23c/YRDn7Q.jpg",
+    link: "https://gregrsea-975.itch.io/end",
+  },
+  {
+    title: "Business Finder",
+    description:
+      "Directory‑style business listing web app (Next.js).",
+    image: "https://placehold.co/600x400/EEE/31343C?text=Business+Finder",
+    link: "https://business-finder-wine.vercel.app/",
+  },
+  {
+    title: "Feane Restaurant Landing",
+    description:
+      "Clean, scroll‑snappy restaurant template (Vercel).",
+    image: "https://placehold.co/600x400/EEE/31343C?text=Feane",
+    link: "https://feane-1-0-0.vercel.app/",
+  },
+  {
+    title: "Furni Furniture Store",
+    description:
+      "Furniture e‑commerce front‑end (Vercel).",
+    image: "https://placehold.co/600x400/EEE/31343C?text=Furni",
+    link: "https://furni-1-0-0-sepia.vercel.app/",
+  },
+  {
+    title: "Koppee Coffee Shop",
+    description:
+      "Hip café landing page with Parallax brew ☕.",
+    image: "https://placehold.co/600x400/EEE/31343C?text=Koppee",
+    link: "https://koppee-1-0-0.vercel.app/",
+  },
+  {
+    title: "ISBN Labeling Feature",
+    description:
+      "Custom ISBN generator/labeler for library system (KemPU).",
+    image: "https://placehold.co/600x400/EEE/31343C?text=ISBN+Feature",
+    link: "https://bitbucket.org/bixelyte/laravel-pustaka8/commits/branch/feature%2Fisbn",
+  },
+];
 
   const games = [
     {
