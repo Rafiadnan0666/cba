@@ -705,65 +705,79 @@ const projects = [
   {
     title: "Artifact Fetching For Dummies",
     description:
-      "FPS horror‑parkour built in Unity.",
+      "A horror–parkour FPS game built in Unity. Escape with the relic... if you can.",
     image:
       "https://img.itch.zone/aW1nLzE4Nzk0Njg5LnBuZw==/original/FsHEyg.png",
     link: "https://gregrsea-975.itch.io/artifact-fetching-for-dummies",
   },
   {
-    title: "JawaraDM Landing Page",
-    description:
-      "Modern responsive landing page (React + Tailwind).",
-    image: "https://placehold.co/600x400/EEE/31343C?text=JawaraDM",
-    link: "https://jawaradm.com/",
-  },
-  {
-    title: "Starfall (Coming Soon)",
-    description:
-      "Sci‑fi roguelike shooter inspired by Risk of Rain 2 & No Man's Sky.",
-    image: "https://via.placeholder.com/300x200?text=Starfall+Game",
-    link: "#",
-  },
-  {
     title: "End",
     description:
-      "A sinister coliseum where warriors fight for false freedom.",
+      "Sinister gladiator arena game where freedom is a lie. Developed in Unity.",
     image:
       "https://img.itch.zone/aW1nLzE5NjM4NTM0LmpwZw==/315x250%23c/YRDn7Q.jpg",
     link: "https://gregrsea-975.itch.io/end",
   },
   {
+    title: "Starfall (Coming Soon)",
+    description:
+      "Sci‑fi roguelike shooter inspired by Risk of Rain 2 & No Man's Sky. Procedural planets. Co-op. Chaos.",
+    image: "https://via.placeholder.com/300x200?text=Starfall+Game",
+    link: "#",
+  },
+  {
+    title: "Ey-Ay",
+    description:
+      "AI desktop assistant built with Node.js and custom voice interaction — part productivity tool, part lonely coder friend.",
+    image: "https://placehold.co/600x400/EEE/31343C?text=Ey-Ay",
+    link: "https://github.com/Rafiadnan0666/Ey-Ay",
+  },
+  {
+    title: "Vaultify (Ideas)",
+    description:
+      "Minimalist idea vault to store your wildest project concepts. Built with Next.js & Supabase.",
+    image: "https://placehold.co/600x400/EEE/31343C?text=Vaultify",
+    link: "https://ideas-wheat.vercel.app/",
+  },
+  {
+    title: "JawaraDM Landing Page",
+    description:
+      "Marketing-first landing page for digital agency. Built with React and Tailwind.",
+    image: "https://placehold.co/600x400/EEE/31343C?text=JawaraDM",
+    link: "https://jawaradm.com/",
+  },
+  {
     title: "Business Finder",
     description:
-      "Directory‑style business listing web app (Next.js).",
+      "Responsive business directory web app using Next.js, built for easy listing and filtering.",
     image: "https://placehold.co/600x400/EEE/31343C?text=Business+Finder",
     link: "https://business-finder-wine.vercel.app/",
   },
   {
     title: "Feane Restaurant Landing",
     description:
-      "Clean, scroll‑snappy restaurant template (Vercel).",
+      "Scroll-snappy, clean restaurant landing page made with HTML, CSS, and Vercel deployment.",
     image: "https://placehold.co/600x400/EEE/31343C?text=Feane",
     link: "https://feane-1-0-0.vercel.app/",
   },
   {
     title: "Furni Furniture Store",
     description:
-      "Furniture e‑commerce front‑end (Vercel).",
+      "Sleek e-commerce front-end built with Tailwind. Product grids, shopping-ready UI.",
     image: "https://placehold.co/600x400/EEE/31343C?text=Furni",
     link: "https://furni-1-0-0-sepia.vercel.app/",
   },
   {
     title: "Koppee Coffee Shop",
     description:
-      "Hip café landing page with Parallax brew ☕.",
+      "A hip café landing page with parallax scrolling and retro brew vibes ☕.",
     image: "https://placehold.co/600x400/EEE/31343C?text=Koppee",
     link: "https://koppee-1-0-0.vercel.app/",
   },
   {
     title: "ISBN Labeling Feature",
     description:
-      "Custom ISBN generator/labeler for library system (KemPU).",
+      "Custom ISBN generator and label system for KemPU's internal library web app (Laravel).",
     image: "https://placehold.co/600x400/EEE/31343C?text=ISBN+Feature",
     link: "https://bitbucket.org/bixelyte/laravel-pustaka8/commits/branch/feature%2Fisbn",
   },

@@ -45,7 +45,7 @@ export const metadata = {
     siteName: "rafiadnan.my.id",
     images: [
       {
-        url: "/og-image.png", // taruh di /public
+        url: "/og-image.png", 
         width: 1200,
         height: 630,
         alt: "Thumbnail: Rafi Adnan Portfolio",
