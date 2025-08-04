@@ -703,6 +703,14 @@ const PortXFolio = () => {
   // Projects data
 const projects = [
   {
+    title: "Time Loop",
+    description:
+      "Puzzle platformer where you cooperate with your past self. Built for GMTK 2025 in Unity.",
+    image:
+      "https://img.itch.zone/aW1nLzIyNDc4OTYyLnBuZw==/315x250%23c/LkK6v4.png", // <-- Replace with your real cover image if needed
+    link: "https://gregrsea-975.itch.io/loop",
+  },
+  {
     title: "Artifact Fetching For Dummies",
     description:
       "A horror–parkour FPS game built in Unity. Escape with the relic... if you can.",
@@ -713,7 +721,7 @@ const projects = [
   {
     title: "End",
     description:
-      "Sinister gladiator arena game where freedom is a lie. Developed in Unity.",
+      "Sinister gladiator arena game where freedom is a lie. Developed in Unity.Built for Boss Rush 2024 in Unity",
     image:
       "https://img.itch.zone/aW1nLzE5NjM4NTM0LmpwZw==/315x250%23c/YRDn7Q.jpg",
     link: "https://gregrsea-975.itch.io/end",
@@ -782,6 +790,7 @@ const projects = [
     link: "https://bitbucket.org/bixelyte/laravel-pustaka8/commits/branch/feature%2Fisbn",
   },
 ];
+
 
   const games = [
     {
