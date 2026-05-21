@@ -4,18 +4,32 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
+  font-family: 'Tahoma', 'MS Sans Serif', 'Arial', sans-serif;
   color: #000;
 }
 
 body {
   overflow: hidden;
-  background-color: #018281;
-  background-image: url('https://i.redd.it/lmsj2hl64mw71.jpg');
+  background-color: #3A6EA5;
+  background-image: url('https://www.wallpapertip.com/wmimgs/231-2317059-windows-xp-bliss-wallpaper-hd.jpg');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
   user-select: none;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 2 L12 8 L18 8 L13 12 L15 18 L10 14 L5 18 L7 12 L2 8 L8 8 Z" fill="white" stroke="black" stroke-width="1"/></svg>'), auto;
+  /* Fallback for older browsers */
+  cursor: crosshair;
+}
+
+/* Loading state */
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000;
+  color: white;
+  font-family: 'Tahoma', sans-serif;
 }
 
 /* Desktop Elements */
@@ -83,6 +97,8 @@ body {
   position: absolute;
   left: 50px;
   top: 50px;
+  font-family: 'Tahoma', 'MS Sans Serif', sans-serif;
+  font-size: 11px;
 }
 
 .window.active-window {
@@ -100,12 +116,14 @@ body {
 .window-title-bar {
   background: linear-gradient(to right, #0058b8, #003366);
   color: white;
-  padding: 5px 8px;
+  padding: 3px 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: move;
   user-select: none;
+  font-weight: bold;
+  font-size: 11px;
 }
 
 .window-controls {
@@ -135,42 +153,223 @@ body {
   padding: 10px;
   background-color: white;
   height: calc(100% - 30px);
+  max-height: calc(100% - 30px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-tab-content {
+  flex: 1;
   overflow-y: auto;
 }
 
-/* Profile Window */
-.profile-content {
+/* Profile Window - Enhanced XP Style */
+.profile-header {
+  position: relative;
+  background: linear-gradient(135deg, #1E3A6F, #3A6EA5);
+  padding: 20px;
   display: flex;
+  align-items: center;
   gap: 20px;
-  align-items: flex-start;
+  border-bottom: 2px solid #003366;
+  overflow: hidden;
 }
 
-.profile-pic {
-  border: 2px solid #003366;
-  border-radius: 4px;
-  width: 150px;
-  height: 150px;
+.profile-header-bg {
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  border-radius: 50%;
 }
 
-.profile-content h2 {
+.profile-header-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 1;
+}
+
+.profile-avatar-frame {
+  width: 80px;
+  height: 80px;
+  border: 3px solid white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.3);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-header-info {
+  flex: 1;
+}
+
+.profile-name {
+  color: white;
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.profile-title {
+  color: #B8D4FF;
+  margin: 0 0 8px 0;
+  font-size: 12px;
+}
+
+.profile-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.profile-badge {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* XP Tabs */
+.xp-tabs {
+  display: flex;
+  background: #ECE9D8;
+  border-bottom: 1px solid #ACA899;
+  padding: 2px 2px 0 2px;
+  gap: 2px;
+}
+
+.xp-tab {
+  background: #ECE9D8;
+  border: 1px solid #ACA899;
+  border-bottom: none;
+  padding: 6px 16px;
+  font-size: 11px;
+  font-family: 'Tahoma', sans-serif;
+  cursor: pointer;
+  color: #000;
+  border-radius: 3px 3px 0 0;
+  margin-bottom: -1px;
+  position: relative;
+}
+
+.xp-tab:hover {
+  background: #F5F3EB;
+}
+
+.xp-tab.active {
+  background: white;
+  border-bottom-color: white;
+  font-weight: bold;
+}
+
+/* XP Fieldsets */
+.xp-fieldset {
+  border: 1px solid #ACA899;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: white;
+  border-radius: 2px;
+}
+
+.xp-fieldset legend {
+  background: #ECE9D8;
+  border: 1px solid #ACA899;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: bold;
   color: #003366;
-  margin-top: 0;
-  border-bottom: 1px solid #003366;
-  padding-bottom: 5px;
+  border-radius: 2px;
 }
 
-.skills-section {
-  margin-top: 15px;
-}
-
-.skills-section h3 {
-  color: #003366;
-  margin-bottom: 10px;
-}
-
-.skills-section ul {
+.xp-list {
+  margin: 0;
   padding-left: 20px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.xp-list li {
+  margin-bottom: 4px;
+}
+
+/* Skill Bars */
+.skill-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.skill-label {
+  width: 160px;
+  font-size: 11px;
   color: #333;
+  flex-shrink: 0;
+}
+
+.skill-track {
+  flex: 1;
+  height: 16px;
+  background: #E0DFD8;
+  border: 1px solid #ACA899;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(180deg, #2E92F7, #1E5799);
+  border-radius: 1px;
+  transition: width 0.5s ease;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* Contact Items */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid #E0DFD8;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-icon {
+  font-size: 16px;
+  width: 24px;
+  text-align: center;
+}
+
+.contact-link {
+  color: #0058B8;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+  color: #003366;
+}
+
+.profile-spotify {
+  margin-top: 10px;
 }
 
 /* Projects Window */
@@ -467,32 +666,36 @@ body {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 40px;
-  background: linear-gradient(to bottom, #2c2f8f, #1e1e6a);
+  height: 30px;
+  background: linear-gradient(to bottom, #2E92F7, #1E5799);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
+  padding: 0 2px;
   color: white;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
   z-index: 1000;
+  border-top: 1px solid #4A8FDE;
 }
 
 .start-button {
-  background: linear-gradient(to bottom, #3a6ea5, #1e4e8c);
-  padding: 5px 15px;
+  background: linear-gradient(to bottom, #FFE89F, #FFD23F);
+  color: #000;
+  padding: 2px 12px;
   border-radius: 3px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 5px;
   font-weight: bold;
-  border: 1px solid #4a8bd4;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  border: 1px solid #000;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 1px 2px rgba(0,0,0,0.3);
+  font-size: 11px;
+  height: 22px;
 }
 
 .start-button:hover {
-  background: linear-gradient(to bottom, #4a8bd4, #2a5e9c);
+  background: linear-gradient(to bottom, #FFF5B4, #FFE066);
 }
 
 .taskbar-items {
@@ -530,7 +733,7 @@ body {
   text-align: center;
 }
 
-/* Animations */
+/* Optimized Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -552,6 +755,27 @@ body {
   100% { transform: translate(-50%, -50%) scale(1); }
 }
 
+/* Performance optimizations */
+.window {
+  will-change: transform;
+  contain: layout style paint;
+  max-height: 90vh;
+}
+
+.game-container {
+  will-change: transform;
+  contain: layout style paint;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Utility Classes */
 .active-window {
   box-shadow: 0 0 10px 2px rgba(0, 132, 255, 0.5);
@@ -563,6 +787,111 @@ body {
   left: 0 !important;
   top: 0 !important;
   border-radius: 0 !important;
+}
+
+/* Itch.io Games Window */
+.itchio-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: linear-gradient(to bottom, #3A6EA5, #1E3A6F);
+  color: white;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.itchio-logo {
+  font-size: 48px;
+}
+
+.itchio-header-text h2 {
+  margin: 0 0 5px 0;
+  color: white;
+  font-size: 18px;
+}
+
+.itchio-header-text p {
+  margin: 0 0 8px 0;
+  color: #ccc;
+  font-size: 12px;
+}
+
+.itchio-profile-link {
+  color: #FFD23F;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.itchio-profile-link:hover {
+  text-decoration: underline;
+}
+
+.itchio-games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 5px;
+}
+
+.itchio-game-card {
+  border: 1px solid #a0a0a0;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.itchio-game-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.itchio-game-image {
+  height: 130px;
+  overflow: hidden;
+  position: relative;
+}
+
+.itchio-game-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.itchio-game-card:hover .itchio-game-image img {
+  transform: scale(1.05);
+}
+
+.itchio-game-genre {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #003366;
+  color: white;
+  padding: 2px 8px;
+  font-size: 10px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.itchio-game-info {
+  padding: 10px;
+}
+
+.itchio-game-info h3 {
+  color: #003366;
+  margin: 0 0 5px 0;
+  font-size: 13px;
+}
+
+.itchio-game-info p {
+  color: #555;
+  font-size: 11px;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
 }
 
 /* Responsive Adjustments */
@@ -632,15 +961,18 @@ body {
 /* Enhanced Start Menu */
 .start-menu {
   position: absolute;
-  bottom: 40px;
+  bottom: 30px;
   left: 0;
-  width: 300px;
-  background: linear-gradient(to bottom, #2c2f8f, #1e1e6a);
-  border-radius: 5px 5px 0 0;
-  box-shadow: 3px -3px 10px rgba(0,0,0,0.3);
+  width: 297px;
+  background: linear-gradient(to bottom, #365F9C, #1E3A6F);
+  border: 2px solid #000;
+  border-radius: 0;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
   color: white;
   z-index: 1001;
   display: none;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 11px;
 }
 
 .start-menu.active {
@@ -648,12 +980,12 @@ body {
 }
 
 .start-header {
-  padding: 15px;
-  background: linear-gradient(to right, #0058b8, #003366);
+  padding: 8px;
+  background: linear-gradient(to right, #3A6EA5, #2E5288);
   display: flex;
   align-items: center;
-  gap: 10px;
-  border-radius: 5px 5px 0 0;
+  gap: 8px;
+  border-bottom: 1px solid #000;
 }
 
 .start-profile-pic {
@@ -687,6 +1019,12 @@ body {
 
 .start-menu-item:hover {
   background-color: rgba(255,255,255,0.1);
+}
+
+.start-menu-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+  margin: 2px 8px;
 }
 
 /* Game Fixes */
@@ -883,6 +1221,551 @@ body {
 .chess-piece.black {
   color: black;
   text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+}
+
+/* Windows XP Boot Screen - Authentic */
+.boot-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+  font-family: 'Tahoma', 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+.boot-starfield {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.boot-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: starMove linear infinite;
+}
+
+@keyframes starMove {
+  0% { transform: translateY(0) translateX(0); opacity: 1; }
+  100% { transform: translateY(-100vh) translateX(100vw); opacity: 0; }
+}
+
+.boot-logo-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.boot-flag {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 15px;
+  animation: flagGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes flagGlow {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.3); }
+}
+
+.boot-flag-piece {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+}
+
+.boot-flag-red { background: #FF0000; animation: flagWave 1.5s ease-in-out infinite; }
+.boot-flag-green { background: #00AA00; animation: flagWave 1.5s ease-in-out infinite 0.1s; }
+.boot-flag-blue { background: #0000FF; animation: flagWave 1.5s ease-in-out infinite 0.2s; }
+.boot-flag-yellow { background: #FFD700; animation: flagWave 1.5s ease-in-out infinite 0.3s; }
+
+@keyframes flagWave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.boot-title {
+  font-size: 28px;
+  font-weight: bold;
+  background: linear-gradient(180deg, #FFFFFF, #AAAAAA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  letter-spacing: 2px;
+  font-family: 'Arial', sans-serif;
+}
+
+.boot-subtitle {
+  font-size: 12px;
+  color: #888;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.boot-progress-container {
+  position: relative;
+  z-index: 1;
+  width: 350px;
+}
+
+.boot-progress {
+  width: 100%;
+  height: 20px;
+  background: #1a1a2e;
+  border: 2px solid #4a4a6a;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.boot-progress-bar {
+  height: 100%;
+  background: linear-gradient(180deg, #2a7fff, #1a5fcf);
+  width: 0%;
+  transition: width 0.3s ease;
+  position: relative;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.2);
+}
+
+.boot-progress-glow {
+  position: absolute;
+  top: 0;
+  right: -20px;
+  width: 40px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: progressShimmer 1.5s linear infinite;
+}
+
+@keyframes progressShimmer {
+  0% { right: -20px; }
+  100% { right: 100%; }
+}
+
+.boot-text {
+  position: relative;
+  z-index: 1;
+  margin-top: 15px;
+  font-size: 12px;
+  color: #AAA;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.boot-text-dots::after {
+  content: '';
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0% { content: ''; }
+  25% { content: '.'; }
+  50% { content: '..'; }
+  75% { content: '...'; }
+}
+
+/* XP-style Buttons */
+.xp-button {
+  background: linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+  border: 1px solid #000;
+  padding: 4px 12px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 #FFF, 0 1px 2px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.xp-button:hover {
+  background: linear-gradient(to bottom, #E6F3FF, #C2E0FF);
+  border-color: #0A246A;
+}
+
+.xp-button:active {
+  background: linear-gradient(to bottom, #C2E0FF, #E6F3FF);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 0 0 1px #0A246A;
+}
+
+/* XP-style Dialog Boxes */
+.xp-dialog {
+  background: #ECE9D8;
+  border: 2px solid #003366;
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  min-width: 300px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 11px;
+}
+
+.xp-dialog-title {
+  background: linear-gradient(to right, #0058B8, #003366);
+  color: white;
+  padding: 3px 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.xp-dialog-content {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.xp-dialog-icon {
+  font-size: 32px;
+}
+
+.xp-dialog-text {
+  flex: 1;
+}
+
+.xp-dialog-buttons {
+  padding: 10px 20px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Quick Launch Toolbar */
+.quick-launch {
+  display: flex;
+  gap: 2px;
+  margin-left: 5px;
+  padding: 2px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 2px;
+}
+
+.quick-launch-item {
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: white;
+  border-radius: 2px;
+}
+
+.quick-launch-item:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* System Tray */
+.system-tray {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 5px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 2px;
+}
+
+.tray-icon {
+  width: 16px;
+  height: 16px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Windows XP Error Messages */
+.error-dialog {
+  border-left: 4px solid #FF0000;
+}
+
+.warning-dialog {
+  border-left: 4px solid #FFA500;
+}
+
+.info-dialog {
+  border-left: 4px solid #0066CC;
+}
+
+/* Windows XP Starfield Screensaver */
+.screensaver {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 9999;
+  cursor: none;
+  overflow: hidden;
+}
+
+.screensaver .star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: starPulse ease-in-out infinite alternate;
+}
+
+@keyframes starPulse {
+  0% {
+    opacity: 0.1;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+.screensaver-text {
+  position: absolute;
+  color: rgba(255,255,255,0.3);
+  font-family: 'Tahoma', sans-serif;
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.screensaver .screensaver-text.marquee {
+  animation: screensaverMove 20s linear infinite;
+}
+
+@keyframes screensaverMove {
+  0% { transform: translate(100vw, 0); }
+  100% { transform: translate(-100%, 0); }
+}
+
+/* Windows XP Loading Cursor */
+.loading-cursor {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8" fill="none" stroke="white" stroke-width="2"/><circle cx="16" cy="8" r="2" fill="white"/><circle cx="24" cy="16" r="2" fill="white"/><circle cx="16" cy="24" r="2" fill="white"/><circle cx="8" cy="16" r="2" fill="white"/></svg>'), auto;
+}
+
+/* XP-style Progress Bars */
+.xp-progress {
+  width: 100%;
+  height: 20px;
+  background: #FFF;
+  border: 1px solid #000;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.xp-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #0066CC, #00AAFF, #0066CC);
+  background-size: 200% 100%;
+  transition: width 0.3s ease;
+  animation: progressShine 2s linear infinite;
+}
+
+@keyframes progressShine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* XP-style Tooltips */
+.xp-tooltip {
+  position: absolute;
+  background: #FFFFE1;
+  border: 1px solid #000;
+  padding: 2px 6px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 11px;
+  z-index: 9999;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Calculator Styles */
+.calculator-container {
+  padding: 10px;
+  background: #ECE9D8;
+}
+
+.calc-display {
+  background: #FFF;
+  border: 2px inset #000;
+  padding: 10px;
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'Courier New', monospace;
+}
+
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.calc-btn {
+  width: 50px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.calc-equals {
+  grid-row: span 2;
+  height: 85px;
+}
+
+/* Notepad Styles */
+.notepad-container {
+  height: 100%;
+  padding: 5px;
+}
+
+.notepad-textarea {
+  width: 100%;
+  height: 100%;
+  border: 1px inset #000;
+  padding: 5px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  resize: none;
+  background: #FFF;
+}
+
+/* Paint Styles */
+.paint-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 5px;
+}
+
+.paint-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  background: #F0F0F0;
+  border: 1px solid #000;
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.color-picker input[type="color"] {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+}
+
+.paint-canvas {
+  background: #FFF;
+  border: 1px inset #000;
+  cursor: crosshair;
+}
+
+/* Windows XP 3D Effects */
+.xp-button-raised {
+  background: linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+  border: 1px solid #000;
+  box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #FFFFFF;
+}
+
+.xp-button-raised:hover {
+  background: linear-gradient(to bottom, #E6F3FF, #C2E0FF);
+  border-color: #0A246A;
+}
+
+.xp-button-pressed {
+  background: linear-gradient(to bottom, #C2E0FF, #E6F3FF);
+  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #FFFFFF;
+}
+
+/* Windows XP Menu Bar */
+.xp-menubar {
+  background: linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+  border-bottom: 1px solid #000;
+  padding: 2px 5px;
+  display: flex;
+  gap: 10px;
+}
+
+.xp-menu-item {
+  padding: 2px 8px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.xp-menu-item:hover {
+  background: #316AC5;
+  color: white;
+}
+
+/* Windows XP File Explorer Styles */
+.explorer-sidebar {
+  background: linear-gradient(to bottom, #3A6EA5, #1E3A6F);
+  color: white;
+  width: 200px;
+  padding: 10px;
+  border-right: 1px solid #000;
+}
+
+.explorer-content {
+  flex: 1;
+  padding: 10px;
+  background: #FFF;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.file-item:hover {
+  background: #316AC5;
+  color: white;
+}
+
+.file-icon {
+  font-size: 16px;
 }
 
 /* Rest of your existing CSS remains the same... */

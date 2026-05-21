@@ -14,82 +14,112 @@ import {
   faRobot,
   faChess,
   faBorderAll,
+  faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import "./../page.css";
 import Script from "next/script";
 const PortXFolio = () => {
   // State hooks
+  const [mounted, setMounted] = useState(false);
   const [windows, setWindows] = useState({
     profile: {
       open: false,
       minimized: false,
       fullscreen: false,
       zIndex: 1,
-      pos: { x: 50, y: 50 },
+      pos: { x: 40, y: 40 },
     },
     projects: {
       open: false,
       minimized: false,
       fullscreen: false,
       zIndex: 2,
-      pos: { x: 100, y: 100 },
+      pos: { x: 80, y: 60 },
     },
     spotify: {
       open: false,
       minimized: false,
       fullscreen: false,
       zIndex: 3,
-      pos: { x: 150, y: 150 },
+      pos: { x: 120, y: 80 },
     },
     gamesLibrary: {
       open: false,
       minimized: false,
       fullscreen: false,
       zIndex: 4,
-      pos: { x: 200, y: 200 },
+      pos: { x: 160, y: 100 },
     },
     targetPractice: {
       open: false,
       minimized: false,
       fullscreen: false,
       zIndex: 5,
-      pos: { x: 220, y: 220 },
+      pos: { x: 200, y: 120 },
     },
     minesweeper: {
       open: false,
       minimized: false,
       fullscreen: false,
       zIndex: 6,
-      pos: { x: 250, y: 250 },
+      pos: { x: 240, y: 100 },
     },
     snake: {
       open: false,
       minimized: false,
       fullscreen: false,
       zIndex: 7,
-      pos: { x: 300, y: 300 },
+      pos: { x: 280, y: 120 },
     },
     tetris: {
       open: false,
       minimized: false,
       fullscreen: false,
       zIndex: 8,
-      pos: { x: 350, y: 350 },
+      pos: { x: 320, y: 80 },
     },
     chess: {
       open: false,
       minimized: false,
       fullscreen: false,
       zIndex: 9,
-      pos: { x: 400, y: 400 },
+      pos: { x: 360, y: 100 },
     },
     aiChat: {
       open: false,
       minimized: false,
       fullscreen: false,
       zIndex: 10,
-      pos: { x: 450, y: 450 },
+      pos: { x: 400, y: 60 },
+    },
+    calculator: {
+      open: false,
+      minimized: false,
+      fullscreen: false,
+      zIndex: 11,
+      pos: { x: 440, y: 80 },
+    },
+    notepad: {
+      open: false,
+      minimized: false,
+      fullscreen: false,
+      zIndex: 12,
+      pos: { x: 480, y: 100 },
+    },
+    paint: {
+      open: false,
+      minimized: false,
+      fullscreen: false,
+      zIndex: 13,
+      pos: { x: 520, y: 120 },
+    },
+    itchio: {
+      open: false,
+      minimized: false,
+      fullscreen: false,
+      zIndex: 14,
+      pos: { x: 560, y: 80 },
     },
   });
 
@@ -99,6 +129,14 @@ const PortXFolio = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [dragWindow, setDragWindow] = useState(null);
+  const [bootScreen, setBootScreen] = useState(true);
+  const [bootProgress, setBootProgress] = useState(0);
+  const [screensaverActive, setScreensaverActive] = useState(false);
+  const [lastActivity, setLastActivity] = useState(0);
+  const [showErrorDialog, setShowErrorDialog] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showWelcomeDialog, setShowWelcomeDialog] = useState(false);
+  const [profileTab, setProfileTab] = useState("about");
 
   // Game states
   const [gameScore, setGameScore] = useState(0);
@@ -132,6 +170,19 @@ const PortXFolio = () => {
   const [userMessage, setUserMessage] = useState("");
   const [isThinking, setIsThinking] = useState(false);
 
+  // Calculator
+  const [calcDisplay, setCalcDisplay] = useState("0");
+  const [calcPrevValue, setCalcPrevValue] = useState("");
+  const [calcOperation, setCalcOperation] = useState("");
+
+  // Notepad
+  const [notepadContent, setNotepadContent] = useState("Welcome to Windows XP Notepad!\n\nThis is Rafi Adnan's portfolio.\n\nTry out the games and explore the features!");
+
+  // Paint
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [paintColor, setPaintColor] = useState("#000000");
+  const canvasRef = useRef(null);
+
   const initializeSnake = () => {
     setSnake([{ x: 10, y: 10 }]);
     setFood({ x: 5, y: 5 });
@@ -141,6 +192,7 @@ const PortXFolio = () => {
   };
 
   useEffect(() => {
+    if (!mounted) return;
     if (windows.snake.open && snake.length === 1 && snake[0].x === 10) {
       initializeSnake();
     }
@@ -153,7 +205,7 @@ const PortXFolio = () => {
     if (windows.chess.open && chessBoard.length === 0) {
       initializeChess();
     }
-  }, [windows]);
+  }, [windows, mounted]);
 
   // Snake game logic
   useEffect(() => {
@@ -259,23 +311,150 @@ const PortXFolio = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [direction, snakeGameOver, currentPiece, tetrisGameOver, windows]);
 
-  // Clock update
+  // Initialize mounted state
   useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(timer);
+    setMounted(true);
+    setLastActivity(Date.now());
   }, []);
 
-  // Tetris game loop
+  // Clock update
   useEffect(() => {
-    if (!windows.tetris.open || tetrisGameOver) return;
+    if (!mounted) return;
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, [mounted]);
 
-    const dropPiece = () => {
-      moveTetrisPiece(0, 1);
+  // Boot sequence
+  useEffect(() => {
+    if (!mounted) return;
+    const bootTimer = setTimeout(() => {
+      setBootProgress(100);
+      setTimeout(() => {
+        setBootScreen(false);
+        playSystemSound('startup');
+        setTimeout(() => {
+          setShowWelcomeDialog(true);
+        }, 1000);
+      }, 500);
+    }, 3000);
+    return () => clearTimeout(bootTimer);
+  }, [mounted]);
+
+  // Boot progress animation
+  useEffect(() => {
+    if (bootScreen) {
+      const progressTimer = setInterval(() => {
+        setBootProgress(prev => Math.min(prev + 2, 100));
+      }, 50);
+      return () => clearInterval(progressTimer);
+    }
+  }, [bootScreen]);
+
+  // Screensaver
+  useEffect(() => {
+    if (!mounted || lastActivity === 0) return;
+    const activityTimer = setInterval(() => {
+      if (Date.now() - lastActivity > 30000) { // 30 seconds
+        setScreensaverActive(true);
+      }
+    }, 1000);
+    return () => clearInterval(activityTimer);
+  }, [lastActivity, mounted]);
+
+  // System sounds
+  const playSystemSound = (sound) => {
+    if (typeof window === 'undefined' || !mounted) return;
+    try {
+      const audio = new Audio();
+      switch(sound) {
+        case 'startup':
+          audio.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmMcBjiS2Oy9diMFl2+z5N17URACOafm8s17IwUte8fw35JBEApOqOPxtGMcBjGH0fPTgjMGHm7A7+OZURE';
+          break;
+        case 'error':
+          audio.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmMcBjiS2Oy9diMFl2+z5N17URACOafm8s17IwUte8fw35JBEApOqOPxtGMcBjGH0fPTgjMGHm7A7+OZURE';
+          break;
+        case 'click':
+          audio.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmMcBjiS2Oy9diMFl2+z5N17URACOafm8s17IwUte8fw35JBEApOqOPxtGMcBjGH0fPTgjMGHm7A7+OZURE';
+          break;
+      }
+      audio.volume = 0.3;
+      audio.play().catch(() => {});
+    } catch (e) {
+      // Ignore audio errors
+    }
+  };
+
+  // Update last activity
+  const updateActivity = () => {
+    if (!mounted) return;
+    setLastActivity(Date.now());
+    if (screensaverActive) {
+      setScreensaverActive(false);
+    }
+  };
+
+  // Calculator functions
+  const handleCalcInput = (value) => {
+    if (value === "C") {
+      setCalcDisplay("0");
+      setCalcPrevValue("");
+      setCalcOperation("");
+    } else if (value === "=") {
+      if (calcOperation && calcPrevValue) {
+        const result = eval(calcPrevValue + calcOperation + calcDisplay);
+        setCalcDisplay(result.toString());
+        setCalcPrevValue("");
+        setCalcOperation("");
+      }
+    } else if (["+", "-", "*", "/"].includes(value)) {
+      setCalcPrevValue(calcDisplay);
+      setCalcOperation(value);
+      setCalcDisplay("0");
+    } else {
+      setCalcDisplay(calcDisplay === "0" ? value : calcDisplay + value);
+    }
+  };
+
+  // Paint functions
+  const startDrawing = (e) => {
+    if (!mounted) return;
+    setIsDrawing(true);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+  };
+
+  const draw = (e) => {
+    if (!isDrawing || !mounted) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const ctx = canvas.getContext("2d");
+    ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+    ctx.strokeStyle = paintColor;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  };
+
+  const stopDrawing = () => {
+    setIsDrawing(false);
+  };
+
+  // Helper function for chess symbols
+  const getChessSymbol = (type, color) => {
+    const symbols = {
+      king: color === "white" ? "♔" : "♚",
+      queen: color === "white" ? "♕" : "♛",
+      rook: color === "white" ? "♖" : "♜",
+      bishop: color === "white" ? "♗" : "♝",
+      knight: color === "white" ? "♘" : "♞",
+      pawn: color === "white" ? "♙" : "♟",
     };
-
-    const gameLoop = setInterval(dropPiece, 1000);
-    return () => clearInterval(gameLoop);
-  }, [windows.tetris.open, tetrisGameOver, currentPiece]);
+    return symbols[type];
+  };
 
   // Window dragging logic
   const handleMouseDown = (e, windowName) => {
@@ -379,7 +558,6 @@ const PortXFolio = () => {
       .map(() => Array(10).fill(0));
     let mines = 15;
 
-
     while (mines > 0) {
       const x = Math.floor(Math.random() * 10);
       const y = Math.floor(Math.random() * 10);
@@ -435,7 +613,6 @@ const PortXFolio = () => {
       return;
     }
 
-
     if (minesweeperGrid[y][x] === 0) {
       for (let dy = -1; dy <= 1; dy++) {
         for (let dx = -1; dx <= 1; dx++) {
@@ -477,7 +654,6 @@ const PortXFolio = () => {
     }
   };
 
-
   const initializeTetris = () => {
     const emptyGrid = Array(20)
       .fill()
@@ -490,27 +666,27 @@ const PortXFolio = () => {
 
   const spawnNewTetrisPiece = () => {
     const pieces = [
-      [[1, 1, 1, 1]], // I
+      [[1, 1, 1, 1]],
       [
         [1, 1],
         [1, 1],
-      ], 
+      ],
       [
         [1, 1, 1],
         [0, 1, 0],
-      ], 
+      ],
       [
         [1, 1, 1],
         [1, 0, 0],
-      ], 
+      ],
       [
         [1, 1, 1],
         [0, 0, 1],
-      ], 
+      ],
       [
         [0, 1, 1],
         [1, 1, 0],
-      ], 
+      ],
       [
         [1, 1, 0],
         [0, 1, 1],
@@ -537,7 +713,6 @@ const PortXFolio = () => {
         pos: { x: newX, y: newY },
       });
     } else if (y > 0) {
-
       lockTetrisPiece();
     }
   };
@@ -582,7 +757,6 @@ const PortXFolio = () => {
     const newGrid = [...tetrisGrid];
     let gameOver = false;
 
-    // Add piece to grid
     for (let row = 0; row < currentPiece.shape.length; row++) {
       for (let col = 0; col < currentPiece.shape[row].length; col++) {
         if (currentPiece.shape[row][col] !== 0) {
@@ -604,7 +778,6 @@ const PortXFolio = () => {
       return;
     }
 
-    // Check for completed lines
     const linesCleared = newGrid.reduce((count, row, y) => {
       if (row.every((cell) => cell !== 0)) {
         newGrid.splice(y, 1);
@@ -619,13 +792,11 @@ const PortXFolio = () => {
     spawnNewTetrisPiece();
   };
 
-
   const initializeChess = () => {
     const board = Array(8)
       .fill()
       .map(() => Array(8).fill(null));
 
-    // Set up pawns
     for (let i = 0; i < 8; i++) {
       board[1][i] = { type: "pawn", color: "black" };
       board[6][i] = { type: "pawn", color: "white" };
@@ -655,7 +826,6 @@ const PortXFolio = () => {
         setSelectedChessPiece({ row, col });
       }
     } else {
-      // Try to move
       const { row: fromRow, col: fromCol } = selectedChessPiece;
       const piece = chessBoard[fromRow][fromCol];
 
@@ -668,13 +838,11 @@ const PortXFolio = () => {
     }
   };
 
-
   const handleAiSubmit = async (e) => {
     e.preventDefault();
     if (!userMessage.trim()) return;
 
     setIsThinking(true);
-
 
     setTimeout(() => {
       const responses = [
@@ -701,96 +869,113 @@ const PortXFolio = () => {
   };
 
   // Projects data
-const projects = [
-  {
-    title: "Time Loop",
-    description:
-      "Puzzle platformer where you cooperate with your past self. Built for GMTK 2025 in Unity.",
-    image:
-      "https://img.itch.zone/aW1nLzIyNDc4OTYyLnBuZw==/315x250%23c/LkK6v4.png", // <-- Replace with your real cover image if needed
-    link: "https://gregrsea-975.itch.io/loop",
-  },
-  {
-    title: "Artifact Fetching For Dummies",
-    description:
-      "A horror–parkour FPS game built in Unity. Escape with the relic... if you can.",
-    image:
-      "https://img.itch.zone/aW1nLzE4Nzk0Njg5LnBuZw==/original/FsHEyg.png",
-    link: "https://gregrsea-975.itch.io/artifact-fetching-for-dummies",
-  },
-  {
-    title: "End",
-    description:
-      "Sinister gladiator arena game where freedom is a lie. Developed in Unity.Built for Boss Rush 2024 in Unity",
-    image:
-      "https://img.itch.zone/aW1nLzE5NjM4NTM0LmpwZw==/315x250%23c/YRDn7Q.jpg",
-    link: "https://gregrsea-975.itch.io/end",
-  },
-  {
-    title: "Starfall (Coming Soon)",
-    description:
-      "Sci‑fi roguelike shooter inspired by Risk of Rain 2 & No Man's Sky. Procedural planets. Co-op. Chaos.",
-    image: "https://via.placeholder.com/300x200?text=Starfall+Game",
-    link: "#",
-  },
-  {
-    title: "Ey-Ay",
-    description:
-      "AI desktop assistant built with Node.js and custom voice interaction — part productivity tool, part lonely coder friend.",
-    image: "https://placehold.co/600x400/EEE/31343C?text=Ey-Ay",
-    link: "https://github.com/Rafiadnan0666/Ey-Ay",
-  },
-  {
-    title: "Vaultify (Ideas)",
-    description:
-      "Minimalist idea vault to store your wildest project concepts. Built with Next.js & Supabase.",
-    image: "https://placehold.co/600x400/EEE/31343C?text=Vaultify",
-    link: "https://ideas-wheat.vercel.app/",
-  },
-  {
-    title: "JawaraDM Landing Page",
-    description:
-      "Marketing-first landing page for digital agency. Built with React and Tailwind.",
-    image: "https://placehold.co/600x400/EEE/31343C?text=JawaraDM",
-    link: "https://jawaradm.com/",
-  },
-  {
-    title: "Business Finder",
-    description:
-      "Responsive business directory web app using Next.js, built for easy listing and filtering.",
-    image: "https://placehold.co/600x400/EEE/31343C?text=Business+Finder",
-    link: "https://business-finder-wine.vercel.app/",
-  },
-  {
-    title: "Feane Restaurant Landing",
-    description:
-      "Scroll-snappy, clean restaurant landing page made with HTML, CSS, and Vercel deployment.",
-    image: "https://placehold.co/600x400/EEE/31343C?text=Feane",
-    link: "https://feane-1-0-0.vercel.app/",
-  },
-  {
-    title: "Furni Furniture Store",
-    description:
-      "Sleek e-commerce front-end built with Tailwind. Product grids, shopping-ready UI.",
-    image: "https://placehold.co/600x400/EEE/31343C?text=Furni",
-    link: "https://furni-1-0-0-sepia.vercel.app/",
-  },
-  {
-    title: "Koppee Coffee Shop",
-    description:
-      "A hip café landing page with parallax scrolling and retro brew vibes ☕.",
-    image: "https://placehold.co/600x400/EEE/31343C?text=Koppee",
-    link: "https://koppee-1-0-0.vercel.app/",
-  },
-  {
-    title: "ISBN Labeling Feature",
-    description:
-      "Custom ISBN generator and label system for KemPU's internal library web app (Laravel).",
-    image: "https://placehold.co/600x400/EEE/31343C?text=ISBN+Feature",
-    link: "https://bitbucket.org/bixelyte/laravel-pustaka8/commits/branch/feature%2Fisbn",
-  },
-];
-
+  const projects = [
+    {
+      title: "Time Loop",
+      description:
+        "Puzzle platformer where you cooperate with your past self. Built for GMTK 2025 in Unity.",
+      image: "https://img.itch.zone/aW1nLzIyNDc4OTYyLnBuZw==/315x250%23c/LkK6v4.png",
+      link: "https://gregrsea-975.itch.io/loop",
+    },
+    {
+      title: "Artifact Fetching For Dummies",
+      description:
+        "A horror-parkour FPS game built in Unity. Escape with the relic... if you can.",
+      image: "https://img.itch.zone/aW1nLzE4Nzk0Njg5LnBuZw==/original/FsHEyg.png",
+      link: "https://gregrsea-975.itch.io/artifact-fetching-for-dummies",
+    },
+    {
+      title: "End",
+      description:
+        "Sinister gladiator arena game where freedom is a lie. Developed in Unity. Built for Boss Rush 2024.",
+      image: "https://img.itch.zone/aW1nLzE5NjM4NTM0LmpwZw==/315x250%23c/YRDn7Q.jpg",
+      link: "https://gregrsea-975.itch.io/end",
+    },
+    {
+      title: "Starfall (Coming Soon)",
+      description:
+        "Sci-fi roguelike shooter inspired by Risk of Rain 2 & No Man's Sky. Procedural planets. Co-op. Chaos.",
+      image: "https://via.placeholder.com/300x200?text=Starfall+Game",
+      link: "#",
+    },
+    {
+      title: "SignalDeck",
+      description:
+        "Real-time webhook dashboard system built with Next.js and Supabase. Listen to webhook events, store them, and display them live.",
+      image: "https://placehold.co/600x400/EEE/31343C?text=SignalDeck",
+      link: "#",
+    },
+    {
+      title: "Deployly.dev",
+      description:
+        "One-click deployment system for shared hosting using FTP/SFTP. Making shared hosting deployment painless.",
+      image: "https://placehold.co/600x400/EEE/31343C?text=Deployly",
+      link: "#",
+    },
+    {
+      title: "Link Hub",
+      description:
+        "Customizable link-in-bio profile hub inspired by Lynk. Built with React and clean modern UI.",
+      image: "https://placehold.co/600x400/EEE/31343C?text=Link+Hub",
+      link: "#",
+    },
+    {
+      title: "Ey-Ay",
+      description:
+        "AI desktop assistant built with Node.js and custom voice interaction - part productivity tool, part lonely coder friend.",
+      image: "https://placehold.co/600x400/EEE/31343C?text=Ey-Ay",
+      link: "https://github.com/Rafiadnan0666/Ey-Ay",
+    },
+    {
+      title: "Vaultify (Ideas)",
+      description:
+        "Minimalist idea vault to store your wildest project concepts. Built with Next.js & Supabase.",
+      image: "https://placehold.co/600x400/EEE/31343C?text=Vaultify",
+      link: "https://ideas-wheat.vercel.app/",
+    },
+    {
+      title: "JawaraDM Landing Page",
+      description:
+        "Marketing-first landing page for digital agency. Built with React and Tailwind.",
+      image: "https://placehold.co/600x400/EEE/31343C?text=JawaraDM",
+      link: "https://jawaradm.com/",
+    },
+    {
+      title: "Business Finder",
+      description:
+        "Responsive business directory web app using Next.js, built for easy listing and filtering.",
+      image: "https://placehold.co/600x400/EEE/31343C?text=Business+Finder",
+      link: "https://business-finder-wine.vercel.app/",
+    },
+    {
+      title: "Feane Restaurant Landing",
+      description:
+        "Scroll-snappy, clean restaurant landing page made with HTML, CSS, and Vercel deployment.",
+      image: "https://placehold.co/600x400/EEE/31343C?text=Feane",
+      link: "https://feane-1-0-0.vercel.app/",
+    },
+    {
+      title: "Furni Furniture Store",
+      description:
+        "Sleek e-commerce front-end built with Tailwind. Product grids, shopping-ready UI.",
+      image: "https://placehold.co/600x400/EEE/31343C?text=Furni",
+      link: "https://furni-1-0-0-sepia.vercel.app/",
+    },
+    {
+      title: "Koppee Coffee Shop",
+      description:
+        "A hip cafe landing page with parallax scrolling and retro brew vibes.",
+      image: "https://placehold.co/600x400/EEE/31343C?text=Koppee",
+      link: "https://koppee-1-0-0.vercel.app/",
+    },
+    {
+      title: "ISBN Labeling Feature",
+      description:
+        "Custom ISBN generator and label system for KemPU's internal library web app (Laravel).",
+      image: "https://placehold.co/600x400/EEE/31343C?text=ISBN+Feature",
+      link: "https://bitbucket.org/bixelyte/laravel-pustaka8/commits/branch/feature%2Fisbn",
+    },
+  ];
 
   const games = [
     {
@@ -825,15 +1010,209 @@ const projects = [
     },
   ];
 
+  const itchioGames = [
+    {
+      title: "Time Loop",
+      description: "A mind-bending FPS puzzle game where the only help you have... is yourself. Literally.",
+      image: "https://img.itch.zone/aW1nLzIyNDc4OTYyLnBuZw==/315x250%23c/LkK6v4.png",
+      link: "https://gregrsea-975.itch.io/loop",
+      genre: "Platformer",
+    },
+    {
+      title: "Artifact Fetching for Dummies",
+      description: "Steal the Artifact. Dodge the Drones. Question Your Life Choices.",
+      image: "https://img.itch.zone/aW1nLzE4Nzk0Njg5LnBuZw==/original/FsHEyg.png",
+      link: "https://gregrsea-975.itch.io/artifact-fetching-for-dummies",
+      genre: "Action",
+    },
+    {
+      title: "END",
+      description: "A sinister coliseum where warriors fight for false freedom.",
+      image: "https://img.itch.zone/aW1nLzE5NjM4NTM0LmpwZw==/315x250%23c/YRDn7Q.jpg",
+      link: "https://gregrsea-975.itch.io/end",
+      genre: "Adventure",
+    },
+    {
+      title: "bear",
+      description: "Scratch the back of a bear but watch it - he can get mad.",
+      image: "https://img.itch.zone/aW1nLzI2Nzk3MzEwLnBuZw==/original/uzuPEy.png",
+      link: "https://gregrsea-975.itch.io/bear",
+      genre: "Action",
+    },
+    {
+      title: "Kaiju Commander",
+      description: "You don't control the kaiju. You suggest.",
+      image: "https://img.itch.zone/aW1nLzI1NzYwOTM5LnBuZw==/315x250%23c/yHALPU.png",
+      link: "https://gregrsea-975.itch.io/kaiju-commander",
+      genre: "Role Playing",
+    },
+    {
+      title: "FACTORY",
+      description: "A minimalist factory simulation prototype where you design and optimize production flows.",
+      image: "https://img.itch.zone/aW1nLzI0ODcyNjI1LnBuZw==/original/BZlGcM.png",
+      link: "https://gregrsea-975.itch.io/factory",
+      genre: "Simulation",
+    },
+    {
+      title: "Mabar Rek",
+      description: "Multiplayer fps shooter up to 20 peopple",
+      image: "https://placehold.co/600x400/EEE/31343C?text=Mabar+Rek",
+      link: "https://gregrsea-975.itch.io/mabar-rek",
+      genre: "Tool",
+    },
+  ];
+
+  if (!mounted) {
+    return (
+      <div className="loading-state">
+        <div>Loading Windows XP Portfolio...</div>
+      </div>
+    );
+  }
+
+  if (bootScreen) {
+    const stars = Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      size: Math.random() * 3 + 1,
+      delay: Math.random() * 3,
+      duration: Math.random() * 3 + 2,
+    }));
+
+    return (
+      <div className="boot-screen">
+        <div className="boot-starfield">
+          {stars.map((star) => (
+            <div
+              key={star.id}
+              className="boot-star"
+              style={{
+                left: `${star.left}%`,
+                top: `${star.top}%`,
+                width: `${star.size}px`,
+                height: `${star.size}px`,
+                animationDelay: `${star.delay}s`,
+                animationDuration: `${star.duration}s`,
+              }}
+            />
+          ))}
+        </div>
+        <div className="boot-logo-container">
+          <div className="boot-flag">
+            <div className="boot-flag-piece boot-flag-red" />
+            <div className="boot-flag-piece boot-flag-green" />
+            <div className="boot-flag-piece boot-flag-blue" />
+            <div className="boot-flag-piece boot-flag-yellow" />
+          </div>
+          <div className="boot-title">Microsoft Windows XP</div>
+          <div className="boot-subtitle">Rafi Adnan Portfolio Edition</div>
+        </div>
+        <div className="boot-progress-container">
+          <div className="boot-progress">
+            <div
+              className="boot-progress-bar"
+              style={{ width: `${bootProgress}%` }}
+            >
+              <div className="boot-progress-glow" />
+            </div>
+          </div>
+          <div className="boot-text">
+            {bootProgress < 30
+              ? "Loading personal configuration..."
+              : bootProgress < 60
+              ? "Starting Windows XP..."
+              : bootProgress < 90
+              ? "Preparing your desktop..."
+              : "Almost there..."}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
-      className="windows-xp-bg"
+      className={`windows-xp-bg ${screensaverActive ? 'screensaver-active' : ''}`}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
+      onClick={updateActivity}
+      onKeyDown={updateActivity}
     >
+      {/* Windows XP Starfield Screensaver */}
+      {screensaverActive && (
+        <div className="screensaver">
+          {Array.from({ length: 80 }, (_, i) => (
+            <div
+              key={i}
+              className="star"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                width: `${Math.random() * 3 + 1}px`,
+                height: `${Math.random() * 3 + 1}px`,
+                animationDuration: `${Math.random() * 3 + 2}s`,
+                animationDelay: `${Math.random() * 5}s`,
+              }}
+            />
+          ))}
+          <div
+            className="screensaver-text"
+            style={{
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              animation: 'none',
+              fontSize: '24px',
+              color: 'rgba(255,255,255,0.15)',
+              fontWeight: 'bold',
+              letterSpacing: '4px',
+            }}
+          >
+            Windows XP Portfolio
+          </div>
+        </div>
+      )}
+
+      {/* Welcome Dialog */}
+      {showWelcomeDialog && (
+        <div className="xp-dialog info-dialog" style={{ width: '400px' }}>
+          <div className="xp-dialog-title">
+            <span>Welcome to Windows XP Portfolio</span>
+            <button onClick={() => setShowWelcomeDialog(false)}>×</button>
+          </div>
+          <div className="xp-dialog-content">
+            <div className="xp-dialog-icon">👋</div>
+            <div className="xp-dialog-text">
+              Welcome to Rafi Adnan&apos;s Windows XP Portfolio! This interactive experience showcases my web development and game development projects. Click on desktop icons to open windows, play games, and explore my work. Enjoy the nostalgic Windows XP experience!
+            </div>
+          </div>
+          <div className="xp-dialog-buttons">
+            <button className="xp-button" onClick={() => setShowWelcomeDialog(false)}>OK</button>
+          </div>
+        </div>
+      )}
+
+      {/* Error Dialog */}
+      {showErrorDialog && (
+        <div className="xp-dialog error-dialog">
+          <div className="xp-dialog-title">
+            <span>Error</span>
+            <button onClick={() => setShowErrorDialog(false)}>×</button>
+          </div>
+          <div className="xp-dialog-content">
+            <div className="xp-dialog-icon">⚠️</div>
+            <div className="xp-dialog-text">{errorMessage}</div>
+          </div>
+          <div className="xp-dialog-buttons">
+            <button className="xp-button" onClick={() => setShowErrorDialog(false)}>OK</button>
+          </div>
+        </div>
+      )}
+
       {/* Desktop Icons */}
-      <div className="desktop-icons">
+      <div className="desktop-icons" onClick={updateActivity}>
         <div className="desktop-icon" onClick={() => openWindow("profile")}>
           <FontAwesomeIcon icon={faUser} size="3x" />
           <span>My Profile</span>
@@ -857,6 +1236,22 @@ const projects = [
           <FontAwesomeIcon icon={faRobot} size="3x" />
           <span>AI Assistant</span>
         </div>
+        <div className="desktop-icon" onClick={() => openWindow("calculator")}>
+          <span style={{fontSize: '48px'}}>🧮</span>
+          <span>Calculator</span>
+        </div>
+        <div className="desktop-icon" onClick={() => openWindow("notepad")}>
+          <span style={{fontSize: '48px'}}>📝</span>
+          <span>Notepad</span>
+        </div>
+        <div className="desktop-icon" onClick={() => openWindow("paint")}>
+          <span style={{fontSize: '48px'}}>🎨</span>
+          <span>Paint</span>
+        </div>
+        <div className="desktop-icon" onClick={() => openWindow("itchio")}>
+          <FontAwesomeIcon icon={faGlobe} size="3x" style={{color: '#ff5c5c'}} />
+          <span>Itch.io Games</span>
+        </div>
       </div>
 
       {/* Profile Window */}
@@ -866,8 +1261,8 @@ const projects = [
       activeWindow === "profile" ? "active-window" : ""
     }`}
     style={{
-      width: windows.profile.fullscreen ? "95vw" : "500px",
-      height: windows.profile.fullscreen ? "90vh" : "auto",
+      width: windows.profile.fullscreen ? "95vw" : "580px",
+      height: windows.profile.fullscreen ? "90vh" : "480px",
       zIndex: windows.profile.zIndex,
       left: windows.profile.fullscreen ? 0 : windows.profile.pos.x,
       top: windows.profile.fullscreen ? 0 : windows.profile.pos.y,
@@ -875,6 +1270,7 @@ const projects = [
     onMouseDown={(e) => handleMouseDown(e, "profile")}
   >
     <div className="window-title-bar">
+      <span>Rafi Adnan - Profile</span>
       <div className="window-controls">
         <button onClick={() => closeWindow("profile")}>
           <FontAwesomeIcon icon={faTimes} />
@@ -892,60 +1288,216 @@ const projects = [
           />
         </button>
       </div>
-      <span>My Profile</span>
     </div>
-    <div className="window-content">
-      <div className="profile-content">
-        <img
-          src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/5807b862bf1790ac6b1f82ab75d1be73-1743593947676/af264c2c-8fbc-4003-a5b3-d0b46292c8f8.png"
-          alt="Profile"
-          className="profile-pic"
-        />
-        <div>
-          <h2>Rafi Adnan</h2>
-          <p>
-            Full-stack Developer | Game Developer | Creative Technologist
-          </p>
-
-          <div className="skills-section">
-            <h3>Technical Skills:</h3>
-            <ul>
-              <li><strong>Frontend:</strong> React, Next.js, Tailwind CSS, JavaScript</li>
-              <li><strong>Backend:</strong> Laravel, PHP, MySQL, Node.js</li>
-              <li><strong>Game Dev:</strong> Unity, C#, Shader Graph, NavMesh AI</li>
-              <li><strong>Tools:</strong> Git, Figma, Vercel, Netlify</li>
-            </ul>
+    <div className="window-content" style={{ padding: 0 }}>
+      <div className="profile-header">
+        <div className="profile-header-bg" />
+        <div className="profile-header-content">
+          <div className="profile-avatar-frame">
+            <img
+              src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/5807b862bf1790ac6b1f82ab75d1be73-1743593947676/af264c2c-8fbc-4003-a5b3-d0b46292c8f8.png"
+              alt="Profile"
+              className="profile-avatar"
+            />
           </div>
-
-          <div className="bio-section">
-            <h3>About Me:</h3>
-            <p>
-              I m a passionate and versatile developer based in Indonesia,
-              dedicated to building immersive digital experiences across web
-              and game development. My skillset bridges frontend and backend
-              systems, real-time interaction, and creative design. Whether
-              it s a sleek full-stack application or a high-energy multiplayer
-              game in Unity, I bring ideas to life with clean code, smart logic,
-              and memorable user experiences. I love challenges and I thrive in
-              both solo and collaborative environments.
-            </p>
-          </div>
-
-          <div className="kofi-section" style={{ marginTop: "20px" }}>
-            <a
-              href="https://ko-fi.com/Q5Q81DS5SA"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                height="36"
-                style={{ border: 0, height: 36 }}
-                src="https://storage.ko-fi.com/cdn/kofi6.png?v=6"
-                alt="Buy Me a Coffee at ko-fi.com"
-              />
-            </a>
+          <div className="profile-header-info">
+            <h2 className="profile-name">Rafi Adnan</h2>
+            <p className="profile-title">Full-stack Developer & Game Developer</p>
+            <div className="profile-badges">
+              <span className="profile-badge">📍 Indonesia</span>
+              <span className="profile-badge">🏆 3rd Place Competition</span>
+              <span className="profile-badge">✅ BNSP Certified</span>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div className="xp-tabs">
+        <button
+          className={`xp-tab ${profileTab === "about" ? "active" : ""}`}
+          onClick={() => setProfileTab("about")}
+        >
+          📋 About
+        </button>
+        <button
+          className={`xp-tab ${profileTab === "skills" ? "active" : ""}`}
+          onClick={() => setProfileTab("skills")}
+        >
+          🛠 Skills
+        </button>
+        <button
+          className={`xp-tab ${profileTab === "contact" ? "active" : ""}`}
+          onClick={() => setProfileTab("contact")}
+        >
+          📫 Contact
+        </button>
+        <button
+          className={`xp-tab ${profileTab === "music" ? "active" : ""}`}
+          onClick={() => setProfileTab("music")}
+        >
+          🎵 Music
+        </button>
+      </div>
+
+      <div className="profile-tab-content">
+        {profileTab === "about" && (
+          <div className="profile-section" style={{ padding: '15px' }}>
+            <fieldset className="xp-fieldset">
+              <legend>About Me</legend>
+              <p style={{ lineHeight: '1.6', fontSize: '12px' }}>
+                I&apos;m a passionate and versatile developer based in Indonesia,
+                dedicated to building immersive digital experiences across web
+                and game development. My skillset bridges frontend and backend
+                systems, real-time interaction, and creative design. Whether
+                it&apos;s a sleek full-stack application or a high-energy multiplayer
+                game in Unity, I bring ideas to life with clean code, smart logic,
+                and memorable user experiences.
+              </p>
+            </fieldset>
+
+            <fieldset className="xp-fieldset">
+              <legend>Education & Achievements</legend>
+              <ul className="xp-list">
+                <li><strong>Certification:</strong> BNSP Web Developer</li>
+                <li><strong>Competition:</strong> 3rd Place - Portfolio Competition 2025</li>
+                <li><strong>Internship:</strong> Web Developer at YBM PLN</li>
+              </ul>
+            </fieldset>
+
+          </div>
+        )}
+
+        {profileTab === "skills" && (
+          <div className="profile-section" style={{ padding: '15px' }}>
+            <fieldset className="xp-fieldset">
+              <legend>Web Development</legend>
+              <div className="skill-bar">
+                <span className="skill-label">React / Next.js</span>
+                <div className="skill-track"><div className="skill-fill" style={{width: '90%'}} /></div>
+              </div>
+              <div className="skill-bar">
+                <span className="skill-label">Laravel / PHP</span>
+                <div className="skill-track"><div className="skill-fill" style={{width: '85%'}} /></div>
+              </div>
+              <div className="skill-bar">
+                <span className="skill-label">Tailwind CSS</span>
+                <div className="skill-track"><div className="skill-fill" style={{width: '92%'}} /></div>
+              </div>
+              <div className="skill-bar">
+                <span className="skill-label">MySQL / Databases</span>
+                <div className="skill-track"><div className="skill-fill" style={{width: '80%'}} /></div>
+              </div>
+              <div className="skill-bar">
+                <span className="skill-label">Node.js</span>
+                <div className="skill-track"><div className="skill-fill" style={{width: '75%'}} /></div>
+              </div>
+            </fieldset>
+
+            <fieldset className="xp-fieldset">
+              <legend>Game Development</legend>
+              <div className="skill-bar">
+                <span className="skill-label">Unity / C#</span>
+                <div className="skill-track"><div className="skill-fill" style={{width: '88%'}} /></div>
+              </div>
+              <div className="skill-bar">
+                <span className="skill-label">Shader Graph</span>
+                <div className="skill-track"><div className="skill-fill" style={{width: '70%'}} /></div>
+              </div>
+              <div className="skill-bar">
+                <span className="skill-label">NavMesh AI</span>
+                <div className="skill-track"><div className="skill-fill" style={{width: '82%'}} /></div>
+              </div>
+              <div className="skill-bar">
+                <span className="skill-label">Procedural Generation</span>
+                <div className="skill-track"><div className="skill-fill" style={{width: '75%'}} /></div>
+              </div>
+            </fieldset>
+
+            <fieldset className="xp-fieldset">
+              <legend>Tools & Others</legend>
+              <div className="skill-bar">
+                <span className="skill-label">Git / GitHub</span>
+                <div className="skill-track"><div className="skill-fill" style={{width: '90%'}} /></div>
+              </div>
+              <div className="skill-bar">
+                <span className="skill-label">Figma</span>
+                <div className="skill-track"><div className="skill-fill" style={{width: '65%'}} /></div>
+              </div>
+              <div className="skill-bar">
+                <span className="skill-label">Vercel / Netlify</span>
+                <div className="skill-track"><div className="skill-fill" style={{width: '85%'}} /></div>
+              </div>
+            </fieldset>
+          </div>
+        )}
+
+        {profileTab === "contact" && (
+          <div className="profile-section" style={{ padding: '15px' }}>
+            <fieldset className="xp-fieldset">
+              <legend>Get In Touch</legend>
+              <div className="contact-item">
+                <span className="contact-icon">📧</span>
+                <a href="mailto:rafiadnan@example.com" className="contact-link">rafiadnan@example.com</a>
+              </div>
+              <div className="contact-item">
+                <span className="contact-icon">🌐</span>
+                <a href="https://rafiadnan.my.id" target="_blank" rel="noopener noreferrer" className="contact-link">rafiadnan.my.id</a>
+              </div>
+              <div className="contact-item">
+                <span className="contact-icon">🐙</span>
+                <a href="https://github.com/Rafiadnan0666" target="_blank" rel="noopener noreferrer" className="contact-link">github.com/Rafiadnan0666</a>
+              </div>
+              <div className="contact-item">
+                <span className="contact-icon">🎮</span>
+                <a href="https://gregrsea-975.itch.io" target="_blank" rel="noopener noreferrer" className="contact-link">gregrsea-975.itch.io</a>
+              </div>
+              <div className="contact-item">
+                <span className="contact-icon">☕</span>
+                <a href="https://ko-fi.com/Q5Q81DS5SA" target="_blank" rel="noopener noreferrer" className="contact-link">Buy me a coffee</a>
+              </div>
+            </fieldset>
+
+            <fieldset className="xp-fieldset">
+              <legend>Support</legend>
+              <div className="kofi-section" style={{ marginTop: '10px' }}>
+                <a
+                  href="https://ko-fi.com/Q5Q81DS5SA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    height="36"
+                    style={{ border: 0, height: 36 }}
+                    src="https://storage.ko-fi.com/cdn/kofi6.png?v=6"
+                    alt="Buy Me a Coffee at ko-fi.com"
+                  />
+                </a>
+              </div>
+            </fieldset>
+          </div>
+        )}
+
+        {profileTab === "music" && (
+          <div className="profile-section" style={{ padding: '15px' }}>
+            <fieldset className="xp-fieldset">
+              <legend>My Music</legend>
+              <p style={{ fontSize: '12px', lineHeight: '1.6' }}>
+                I also produce electronic and dubstep music! Check out my track &quot;Joy Theme&quot; on Spotify.
+              </p>
+            </fieldset>
+            <div className="profile-spotify">
+              <iframe
+                src="https://open.spotify.com/embed/artist/2PYunjmmYVDbsSudTPSwyv?utm_source=generator"
+                width="100%"
+                height="200"
+                frameBorder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                className="spotify-embed"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   </div>
@@ -987,26 +1539,61 @@ const projects = [
             </div>
             <span>Projects</span>
           </div>
-          <div className="window-content">
-            <div className="projects-grid">
-              {projects.map((project, index) => (
-                <div key={index} className="project-card">
-                  <div className="project-image-container">
-                    <img src={project.image} alt={project.title} />
+          <div className="window-content" style={{ display: 'flex', height: 'calc(100% - 30px)' }}>
+            <div className="explorer-sidebar">
+              <h3>File & Folder Tasks</h3>
+              <div className="file-item" onClick={() => window.open('https://github.com/Rafiadnan0666', '_blank')}>
+                <span className="file-icon">📁</span>
+                <span>My GitHub</span>
+              </div>
+              <div className="file-item" onClick={() => window.open('https://rafiadnan.my.id', '_blank')}>
+                <span className="file-icon">🌐</span>
+                <span>Website</span>
+              </div>
+              <div className="file-item" onClick={() => setStartMenuOpen(true)}>
+                <span className="file-icon">📂</span>
+                <span>Other Places</span>
+              </div>
+              <h3 style={{ marginTop: '20px' }}>Details</h3>
+              <p style={{ fontSize: '11px', lineHeight: '1.4' }}>
+                Rafi Adnan<br/>
+                Web & Game Developer<br/>
+                <br/>
+                Skills: React, Laravel, Unity<br/>
+                Location: Indonesia<br/>
+                <br/>
+                {projects.length} Projects
+              </p>
+            </div>
+            <div className="explorer-content">
+              <div className="xp-menubar">
+                <div className="xp-menu-item">File</div>
+                <div className="xp-menu-item">Edit</div>
+                <div className="xp-menu-item">View</div>
+                <div className="xp-menu-item">Favorites</div>
+                <div className="xp-menu-item">Tools</div>
+                <div className="xp-menu-item">Help</div>
+              </div>
+              <div className="projects-grid">
+                {projects.map((project, index) => (
+                  <div key={index} className="project-card">
+                    <div className="project-image-container">
+                      <img src={project.image} alt={project.title} />
+                    </div>
+                    <div className="project-info">
+                      <h3>{project.title}</h3>
+                      <p>{project.description}</p>
+                      <Link
+                        href={project.link}
+                        target="_blank"
+                        className="project-link"
+                      >
+                        View Project
+                      </Link>
+                    </div>
                   </div>
-                  <div className="project-info">
-                    <h3>{project.title}</h3>
-                    <p>{project.description}</p>
-                    <Link
-                      href={project.link}
-                      target="_blank"
-                      className="project-link"
-                    >
-                      View Project
-                    </Link>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -1438,6 +2025,164 @@ const projects = [
         </div>
       )}
 
+      {/* Calculator Window */}
+      {windows.calculator.open && !windows.calculator.minimized && (
+        <div
+          className={`window ${activeWindow === "calculator" ? "active-window" : ""}`}
+          style={{
+            width: windows.calculator.fullscreen ? "95vw" : "280px",
+            height: windows.calculator.fullscreen ? "90vh" : "350px",
+            zIndex: windows.calculator.zIndex,
+            left: windows.calculator.fullscreen ? 0 : windows.calculator.pos.x,
+            top: windows.calculator.fullscreen ? 0 : windows.calculator.pos.y,
+          }}
+          onMouseDown={(e) => handleMouseDown(e, "calculator")}
+        >
+          <div className="window-title-bar">
+            <div className="window-controls">
+              <button onClick={() => closeWindow("calculator")}>
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+              <button onClick={() => toggleMinimize("calculator")}>
+                <FontAwesomeIcon icon={faMinus} />
+              </button>
+              <button onClick={() => toggleFullscreen("calculator")}>
+                <FontAwesomeIcon
+                  icon={
+                    windows.calculator.fullscreen
+                      ? faWindowRestore
+                      : faWindowMaximize
+                  }
+                />
+              </button>
+            </div>
+            <span>Calculator</span>
+          </div>
+          <div className="window-content">
+            <div className="calculator-container">
+              <div className="calc-display">{calcDisplay}</div>
+              <div className="calc-buttons">
+                {["C", "7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", "=", "+"].map((btn, index) => (
+                  <button
+                    key={index}
+                    className={`xp-button calc-btn ${btn === "=" ? "calc-equals" : ""}`}
+                    onClick={() => handleCalcInput(btn)}
+                  >
+                    {btn}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Notepad Window */}
+      {windows.notepad.open && !windows.notepad.minimized && (
+        <div
+          className={`window ${activeWindow === "notepad" ? "active-window" : ""}`}
+          style={{
+            width: windows.notepad.fullscreen ? "95vw" : "500px",
+            height: windows.notepad.fullscreen ? "90vh" : "400px",
+            zIndex: windows.notepad.zIndex,
+            left: windows.notepad.fullscreen ? 0 : windows.notepad.pos.x,
+            top: windows.notepad.fullscreen ? 0 : windows.notepad.pos.y,
+          }}
+          onMouseDown={(e) => handleMouseDown(e, "notepad")}
+        >
+          <div className="window-title-bar">
+            <div className="window-controls">
+              <button onClick={() => closeWindow("notepad")}>
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+              <button onClick={() => toggleMinimize("notepad")}>
+                <FontAwesomeIcon icon={faMinus} />
+              </button>
+              <button onClick={() => toggleFullscreen("notepad")}>
+                <FontAwesomeIcon
+                  icon={
+                    windows.notepad.fullscreen
+                      ? faWindowRestore
+                      : faWindowMaximize
+                  }
+                />
+              </button>
+            </div>
+            <span>Notepad</span>
+          </div>
+          <div className="window-content">
+            <div className="notepad-container">
+              <textarea
+                className="notepad-textarea"
+                value={notepadContent}
+                onChange={(e) => setNotepadContent(e.target.value)}
+                placeholder="Start typing..."
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Paint Window */}
+      {windows.paint.open && !windows.paint.minimized && (
+        <div
+          className={`window ${activeWindow === "paint" ? "active-window" : ""}`}
+          style={{
+            width: windows.paint.fullscreen ? "95vw" : "600px",
+            height: windows.paint.fullscreen ? "90vh" : "500px",
+            zIndex: windows.paint.zIndex,
+            left: windows.paint.fullscreen ? 0 : windows.paint.pos.x,
+            top: windows.paint.fullscreen ? 0 : windows.paint.pos.y,
+          }}
+          onMouseDown={(e) => handleMouseDown(e, "paint")}
+        >
+          <div className="window-title-bar">
+            <div className="window-controls">
+              <button onClick={() => closeWindow("paint")}>
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+              <button onClick={() => toggleMinimize("paint")}>
+                <FontAwesomeIcon icon={faMinus} />
+              </button>
+              <button onClick={() => toggleFullscreen("paint")}>
+                <FontAwesomeIcon
+                  icon={
+                    windows.paint.fullscreen
+                      ? faWindowRestore
+                      : faWindowMaximize
+                  }
+                />
+              </button>
+            </div>
+            <span>Paint</span>
+          </div>
+          <div className="window-content">
+            <div className="paint-container">
+              <div className="paint-toolbar">
+                <div className="color-picker">
+                  <input
+                    type="color"
+                    value={paintColor}
+                    onChange={(e) => setPaintColor(e.target.value)}
+                  />
+                  <button className="xp-button" onClick={() => setPaintColor("#000000")}>Clear</button>
+                </div>
+              </div>
+              <canvas
+                ref={canvasRef}
+                width={550}
+                height={400}
+                className="paint-canvas"
+                onMouseDown={startDrawing}
+                onMouseMove={draw}
+                onMouseUp={stopDrawing}
+                onMouseLeave={stopDrawing}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* AI Assistant Window */}
       {windows.aiChat.open && !windows.aiChat.minimized && (
         <div
@@ -1567,79 +2312,179 @@ const projects = [
 )}
 
 
+      {/* Itch.io Games Window */}
+      {windows.itchio.open && !windows.itchio.minimized && (
+        <div
+          className={`window ${activeWindow === "itchio" ? "active-window" : ""}`}
+          style={{
+            width: windows.itchio.fullscreen ? "95vw" : "700px",
+            height: windows.itchio.fullscreen ? "90vh" : "500px",
+            zIndex: windows.itchio.zIndex,
+            left: windows.itchio.fullscreen ? 0 : windows.itchio.pos.x,
+            top: windows.itchio.fullscreen ? 0 : windows.itchio.pos.y,
+          }}
+          onMouseDown={(e) => handleMouseDown(e, "itchio")}
+        >
+          <div className="window-title-bar">
+            <div className="window-controls">
+              <button onClick={() => closeWindow("itchio")}>
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+              <button onClick={() => toggleMinimize("itchio")}>
+                <FontAwesomeIcon icon={faMinus} />
+              </button>
+              <button onClick={() => toggleFullscreen("itchio")}>
+                <FontAwesomeIcon icon={windows.itchio.fullscreen ? faWindowRestore : faWindowMaximize} />
+              </button>
+            </div>
+            <span>Itch.io Game Library - Gregrsea 975</span>
+          </div>
+          <div className="window-content">
+            <div className="itchio-header">
+              <span className="itchio-logo">🎮</span>
+              <div className="itchio-header-text">
+                <h2>Gregrsea 975 - Game Dev Studio</h2>
+                <p>Indie games built with Unity, sweat, and questionable life choices.</p>
+                <a href="https://gregrsea-975.itch.io" target="_blank" rel="noopener noreferrer" className="itchio-profile-link">
+                  View Full Profile on Itch.io
+                </a>
+              </div>
+            </div>
+            <div className="itchio-games-grid">
+              {itchioGames.map((game, index) => (
+                <div key={index} className="itchio-game-card">
+                  <div className="itchio-game-image">
+                    <img src={game.image} alt={game.title} />
+                    <span className="itchio-game-genre">{game.genre}</span>
+                  </div>
+                  <div className="itchio-game-info">
+                    <h3>{game.title}</h3>
+                    <p>{game.description}</p>
+                    <a href={game.link} target="_blank" rel="noopener noreferrer" className="project-link">
+                      Play / Download
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Taskbar */}
-      <div className="taskbar">
+      <div className="taskbar" onClick={updateActivity}>
         <div
           className="start-button"
-          onClick={() => setStartMenuOpen(!startMenuOpen)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setStartMenuOpen(!startMenuOpen);
+          }}
         >
           <span>Start</span>
         </div>
+        
+        {/* Quick Launch */}
+        <div className="quick-launch">
+          <div className="quick-launch-item" onClick={() => openWindow('profile')} title="Show Desktop">
+            🏠
+          </div>
+          <div className="quick-launch-item" onClick={() => openWindow('projects')} title="Internet Explorer">
+            🌐
+          </div>
+          <div className="quick-launch-item" onClick={() => openWindow('gamesLibrary')} title="Games">
+            🎮
+          </div>
+          <div className="quick-launch-item" onClick={() => openWindow('itchio')} title="Itch.io Games">
+            🕹️
+          </div>
+        </div>
         {startMenuOpen && (
-          <div className="start-menu active">
+          <div className="start-menu active" onClick={(e) => e.stopPropagation()}>
             <div className="start-header">
               <img
                 src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/5807b862bf1790ac6b1f82ab75d1be73-1743593947676/af264c2c-8fbc-4003-a5b3-d0b46292c8f8.png"
                 alt="Profile"
-                className="start-profile-pic"
+                width="48"
+                height="48"
               />
               <div>
                 <div className="start-name">Rafi Adnan</div>
-                <div className="start-skills">
-                  Full-Stack Developer | Game Designer
-                </div>
+                <div className="start-skills">Web & Game Developer</div>
               </div>
             </div>
             <div className="start-menu-items">
-              <div
-                className="start-menu-item"
-                onClick={() => {
-                  openWindow("profile");
-                  setStartMenuOpen(false);
-                }}
-              >
-                <FontAwesomeIcon icon={faUser} />
+              <div className="start-menu-item" onClick={() => { openWindow('profile'); setStartMenuOpen(false); }}>
+                <span>👤</span>
                 <span>My Profile</span>
               </div>
-              <div
-                className="start-menu-item"
-                onClick={() => {
-                  openWindow("projects");
-                  setStartMenuOpen(false);
-                }}
-              >
-                <FontAwesomeIcon icon={faFolder} />
-                <span>Projects</span>
+              <div className="start-menu-item" onClick={() => { openWindow('projects'); setStartMenuOpen(false); }}>
+                <span>📁</span>
+                <span>My Projects</span>
               </div>
-              <div
-                className="start-menu-item"
-                onClick={() => {
-                  openWindow("gamesLibrary");
-                  setStartMenuOpen(false);
-                }}
-              >
-                <FontAwesomeIcon icon={faGamepad} />
+              <div className="start-menu-item" onClick={() => { openWindow('documents'); setStartMenuOpen(false); }}>
+                <span>📄</span>
+                <span>My Documents</span>
+              </div>
+              <div className="start-menu-item" onClick={() => { openWindow('pictures'); setStartMenuOpen(false); }}>
+                <span>🖼️</span>
+                <span>My Pictures</span>
+              </div>
+              <div className="start-menu-item" onClick={() => { openWindow('music'); setStartMenuOpen(false); }}>
+                <span>🎵</span>
+                <span>My Music</span>
+              </div>
+              <div className="start-menu-divider"></div>
+              <div className="start-menu-item" onClick={() => { openWindow('gamesLibrary'); setStartMenuOpen(false); }}>
+                <span>🎮</span>
                 <span>Games</span>
               </div>
-              <div
-                className="start-menu-item"
-                onClick={() => {
-                  openWindow("spotify");
-                  setStartMenuOpen(false);
-                }}
-              >
-                <FontAwesomeIcon icon={faMusic} />
-                <span>Spotify</span>
+              <div className="start-menu-item" onClick={() => { openWindow('itchio'); setStartMenuOpen(false); }}>
+                <span>🕹️</span>
+                <span>Itch.io Games</span>
               </div>
-              <div
-                className="start-menu-item"
-                onClick={() => {
-                  openWindow("aiChat");
-                  setStartMenuOpen(false);
-                }}
-              >
-                <FontAwesomeIcon icon={faRobot} />
-                <span>AI Assistant</span>
+              <div className="start-menu-item" onClick={() => { openWindow('calculator'); setStartMenuOpen(false); }}>
+                <span>🧮</span>
+                <span>Calculator</span>
+              </div>
+              <div className="start-menu-item" onClick={() => { openWindow('notepad'); setStartMenuOpen(false); }}>
+                <span>📝</span>
+                <span>Notepad</span>
+              </div>
+              <div className="start-menu-divider"></div>
+              <div className="start-menu-item" onClick={() => { 
+                setErrorMessage('This is a simulated Windows XP error message!');
+                setShowErrorDialog(true);
+                setStartMenuOpen(false);
+                playSystemSound('error');
+              }}>
+                <span>⚠️</span>
+                <span>Simulate Error</span>
+              </div>
+              <div className="start-menu-item" onClick={() => { setScreensaverActive(true); setStartMenuOpen(false); }}>
+                <span>🖥️</span>
+                <span>Screensaver</span>
+              </div>
+              <div className="start-menu-divider"></div>
+              <div className="start-menu-item" onClick={() => { setStartMenuOpen(false); }}>
+                <span>❌</span>
+                <span>Log Off</span>
+              </div>
+              <div className="start-menu-item" onClick={() => { 
+                setStartMenuOpen(false);
+                setBootScreen(true);
+                setTimeout(() => {
+                  setBootScreen(false);
+                }, 3000);
+              }}>
+                <span>🔄</span>
+                <span>Restart</span>
+              </div>
+              <div className="start-menu-item" onClick={() => { 
+                setStartMenuOpen(false);
+                window.close();
+              }}>
+                <span>💤</span>
+                <span>Shut Down</span>
               </div>
             </div>
           </div>
@@ -1678,6 +2523,8 @@ const projects = [
                         ? faChess
                         : name === "aiChat"
                         ? faRobot
+                        : name === "itchio"
+                        ? faGlobe
                         : faGlobe
                     }
                   />
@@ -1692,6 +2539,8 @@ const projects = [
                       ? "Chess"
                       : name === "targetPractice"
                       ? "Target Practice"
+                      : name === "itchio"
+                      ? "Itch.io"
                       : name === "gamesLibrary"
                       ? "Games"
                       : name.charAt(0).toUpperCase() + name.slice(1)}
@@ -1700,27 +2549,24 @@ const projects = [
               )
           )}
         </div>
-        <div className="clock">
-          {time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-          <br />
-          {time.toLocaleDateString()}
+        {/* System Tray */}
+        <div className="system-tray">
+          <div className="tray-icon" title="Volume">
+            🔊
+          </div>
+          <div className="tray-icon" title="Network">
+            🌐
+          </div>
+          <div className="tray-icon" title="Security">
+            🛡️
+          </div>
+          <div className="clock">
+            {time.toLocaleTimeString()}
+          </div>
         </div>
       </div>
     </div>
   );
-
-  // Helper function for chess symbols
-  function getChessSymbol(type, color) {
-    const symbols = {
-      king: color === "white" ? "♔" : "♚",
-      queen: color === "white" ? "♕" : "♛",
-      rook: color === "white" ? "♖" : "♜",
-      bishop: color === "white" ? "♗" : "♝",
-      knight: color === "white" ? "♘" : "♞",
-      pawn: color === "white" ? "♙" : "♟",
-    };
-    return symbols[type];
-  }
 };
 
 export default PortXFolio;
