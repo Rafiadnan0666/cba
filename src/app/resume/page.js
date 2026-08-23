@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Head from 'next/head';
 import { useReactToPrint } from 'react-to-print';
 import { useRef } from 'react';
@@ -92,7 +92,7 @@ export default function Resume() {
                   <div className="mb-6">
                     <div className="flex justify-between items-start">
                       <h3 className="font-bold text-gray-800">Web Developer Intern</h3>
-                      <span className="text-sm text-gray-600">Feb 2024 – Jul 2024</span>
+                      <span className="text-sm text-gray-600">Feb 2024 â€“ Jul 2024</span>
                     </div>
                     <p className="text-gray-600 text-sm mb-2">YBM PLN</p>
                     <ul className="list-disc pl-5 mt-2 space-y-1 text-gray-700 text-sm">
@@ -105,7 +105,7 @@ export default function Resume() {
                   <div className="mb-6">
                     <div className="flex justify-between items-start">
                       <h3 className="font-bold text-gray-800">Freelance Full-Stack Developer</h3>
-                      <span className="text-sm text-gray-600">2023 – Present</span>
+                      <span className="text-sm text-gray-600">2023 â€“ Present</span>
                     </div>
                     <ul className="list-disc pl-5 mt-2 space-y-1 text-gray-700 text-sm">
                       <li>Developed full-stack applications using Laravel, Next.js, and Supabase</li>
@@ -117,7 +117,7 @@ export default function Resume() {
                   <div>
                     <div className="flex justify-between items-start">
                       <h3 className="font-bold text-gray-800">Indie Game Developer</h3>
-                      <span className="text-sm text-gray-600">2022 – Present</span>
+                      <span className="text-sm text-gray-600">2022 â€“ Present</span>
                     </div>
                     <ul className="list-disc pl-5 mt-2 space-y-1 text-gray-700 text-sm">
                       <li>Developed Unity-based games including FPS horror and roguelike shooters</li>

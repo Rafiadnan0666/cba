@@ -1,4 +1,4 @@
-// app/layout.tsx (atau layout.ts)
+﻿// app/layout.tsx (atau layout.ts)
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -16,11 +16,11 @@ const geistMono = localFont({
 export const metadata = {
   metadataBase: new URL("https://rafiadnan.my.id"),
   title: {
-    default: "Rafi Adnan – Web & Game Developer",
+    default: "Rafi Adnan â€“ Web & Game Developer",
     template: "%s | Rafi Adnan",
   },
   description:
-    "Full‑stack web & indie game developer based in Indonesia. Specialising in React, Laravel, Unity, and procedural madness.",
+    "Fullâ€‘stack web & indie game developer based in Indonesia. Specialising in React, Laravel, Unity, and procedural madness.",
 
   keywords: [
     "Rafi Adnan",
@@ -38,7 +38,7 @@ export const metadata = {
   publisher: "Rafi Adnan",
 
   openGraph: {
-    title: "Rafi Adnan – Web & Game Developer",
+    title: "Rafi Adnan â€“ Web & Game Developer",
     description:
       "Showcasing projects in web development, indie games, and everything in between.",
     url: "https://rafiadnan.my.id",
@@ -57,9 +57,9 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Rafi Adnan – Web & Game Dev",
+    title: "Rafi Adnan | Web & Game Dev",
     description:
-      "Full‑stack web & indie game developer. React, Laravel, Unity—let's build something awesome.",
+      "Full-stack web & indie game developer. React, Laravel, Unity. Let's build something awesome.",
     images: ["/og-image.png"],
   },
 
@@ -82,7 +82,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
