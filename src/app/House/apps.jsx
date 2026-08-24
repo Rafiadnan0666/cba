@@ -284,7 +284,7 @@ const PST_KING = [20, 30, 10, 0, 0, 10, 30, 20, 20, 20, 0, 0, 0, 0, 20, 20, -10,
 
 function initChessBoard() {
   const b = Array.from({ length: 8 }, () => Array(8).fill(null));
-  const order = ["r", "n", "b", "q", "k", "b", "n", "r"];
+  const order = ["r", "n", "b", "k", "q", "b", "n", "r"];
   for (let i = 0; i < 8; i++) {
     b[0][i] = { t: order[i], c: "black" };
     b[1][i] = { t: "p", c: "black" };
@@ -332,6 +332,20 @@ function pseudoMoves(b, color) {
         for (const [dr, dc] of [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]]) push(r, c, r + dr, c + dc);
       } else if (p.t === "k") {
         for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) if (dr || dc) push(r, c, r + dr, c + dc);
+        const castleRow = color === "white" ? 7 : 0;
+        const opponent = color === "white" ? "black" : "white";
+        if (r === castleRow && c === 4) {
+          const shortRook = b[r][7];
+          const longRook = b[r][0];
+          const shortClear = !b[r][5] && !b[r][6];
+          const longClear = !b[r][1] && !b[r][2] && !b[r][3];
+          if (shortRook && shortRook.t === "r" && shortRook.c === color && shortClear && !inCheck(b, color) && !isAttacked(b, r, 5, opponent) && !isAttacked(b, r, 6, opponent)) {
+            push(r, c, r, c + 2);
+          }
+          if (longRook && longRook.t === "r" && longRook.c === color && longClear && !inCheck(b, color) && !isAttacked(b, r, 3, opponent) && !isAttacked(b, r, 2, opponent)) {
+            push(r, c, r, c - 2);
+          }
+        }
       } else {
         const dirs =
           p.t === "r"
@@ -364,6 +378,17 @@ function applyMove(b, m) {
   nb[m.fr][m.fc] = null;
   if (m.promo) piece.t = m.promo;
   nb[m.tr][m.tc] = piece;
+  if (piece.t === "k" && Math.abs(m.fc - m.tc) === 2) {
+    if (m.tc > m.fc) {
+      const rook = nb[m.fr][7];
+      nb[m.fr][7] = null;
+      nb[m.fr][5] = rook;
+    } else {
+      const rook = nb[m.fr][0];
+      nb[m.fr][0] = null;
+      nb[m.fr][3] = rook;
+    }
+  }
   return nb;
 }
 
@@ -376,7 +401,39 @@ function findKing(b, color) {
 }
 
 function isAttacked(b, r, c, byColor) {
-  return pseudoMoves(b, byColor).some((m) => m.tr === r && m.tc === c);
+  for (let rr = 0; rr < 8; rr++) {
+    for (let cc = 0; cc < 8; cc++) {
+      const p = b[rr][cc];
+      if (!p || p.c !== byColor) continue;
+      if (p.t === "p") {
+        const dir = byColor === "white" ? -1 : 1;
+        if (rr + dir === r && (cc + 1 === c || cc - 1 === c)) return true;
+      } else if (p.t === "n") {
+        const deltas = [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]];
+        if (deltas.some(([dr, dc]) => rr + dr === r && cc + dc === c)) return true;
+      } else if (p.t === "k") {
+        if (Math.abs(rr - r) <= 1 && Math.abs(cc - c) <= 1 && !(rr === r && cc === c)) return true;
+      } else {
+        const dirs =
+          p.t === "r"
+            ? [[-1, 0], [1, 0], [0, -1], [0, 1]]
+            : p.t === "b"
+            ? [[-1, -1], [-1, 1], [1, -1], [1, 1]]
+            : [[-1, 0], [1, 0], [0, -1], [0, 1], [-1, -1], [-1, 1], [1, -1], [1, 1]];
+        for (const [dr, dc] of dirs) {
+          let tr = rr + dr;
+          let tc = cc + dc;
+          while (inside(tr, tc)) {
+            if (tr === r && tc === c) return true;
+            if (b[tr][tc]) break;
+            tr += dr;
+            tc += dc;
+          }
+        }
+      }
+    }
+  }
+  return false;
 }
 
 function inCheck(b, color) {
