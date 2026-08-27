@@ -512,6 +512,7 @@ const LEVELS = {
   hard: { depth: 3, jitter: 0, label: "Ey-Ay: Grandmaster" },
   emperor: { depth: 4, jitter: 0, label: "Ey-Ay: Emperor" },
   primordial: { depth: 5, jitter: 0, label: "Ey-Ay: Primordial" },
+  kipas: { depth: 8, jitter: 0, label: "Ey-Ay: Dewa Kipas" },
 };
 
 export function ChessBody({ muted }) {
