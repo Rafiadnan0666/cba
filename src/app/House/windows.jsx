@@ -135,7 +135,19 @@ export function ProfileContent({ tab, setTab }) {
               </div>
               <div className="contact-item">
                 <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#29abe2" stroke="#147ba9" /><path d="M12 2 v20 M2 12 h20 M5 5 q7 4 14 0 M5 19 q7 -4 14 0" stroke="#dff0ff" fill="none" /></svg>
-                <a href="https://linkedin.com/in/rafi-adnan" target="_blank" rel="noopener noreferrer" className="contact-link">linkedin.com/in/rafi-adnan</a>
+                <a href="https://www.linkedin.com/in/rafi-adnan-a52141274/" target="_blank" rel="noopener noreferrer" className="contact-link">linkedin.com/in/rafi-adnan-a52141274</a>
+              </div>
+              <div className="contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2" fill="#0ea5e9" stroke="#0369a1" /><path d="M7 10 l5 5 7 -7" stroke="#fff" strokeWidth="2" fill="none" /></svg>
+                <a href="https://fastwork.id/user/gregrsea/web-development-41322905?source=seller-center_my-service_share-link" target="_blank" rel="noopener noreferrer" className="contact-link">fastwork.id/gregrsea</a>
+              </div>
+              <div className="contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2" fill="#1dbf73" stroke="#0d8a4f" /><path d="M12 3 v18 M3 12 h18" stroke="#fff" strokeWidth="2" /></svg>
+                <a href="https://www.fiverr.com/s/1EA3XQ6" target="_blank" rel="noopener noreferrer" className="contact-link">fiverr.com/s/1EA3XQ6</a>
+              </div>
+              <div className="contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#e1306c" stroke="#c13584" /><path d="M12 5 c-2.5 0 -4.5 1.2 -4.5 3.5 0 2 1.5 3.5 4.5 3.5 2.5 0 4.5 -1.2 4.5 -3.5 0 -2.3 -2 -3.5 -4.5 -3.5 z" fill="#feda75" /><circle cx="16.5" cy="7.5" r="1.5" fill="#e1306c" /></svg>
+                <a href="https://www.instagram.com/gregrsea_ninesevenfive/" target="_blank" rel="noopener noreferrer" className="contact-link">instagram.com/gregrsea_ninesevenfive</a>
               </div>
             </fieldset>
             <fieldset className="xp-fieldset">

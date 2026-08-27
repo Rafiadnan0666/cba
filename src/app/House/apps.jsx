@@ -513,6 +513,7 @@ const LEVELS = {
   emperor: { depth: 4, jitter: 0, label: "Ey-Ay: Emperor" },
   primordial: { depth: 5, jitter: 0, label: "Ey-Ay: Primordial" },
   kipas: { depth: 8, jitter: 0, label: "Ey-Ay: Dewa Kipas" },
+  omega: { depth: 12, jitter: 0, label: "Ey-Ay: ΩMEGA (The Final Form)" },
 };
 
 export function ChessBody({ muted }) {
