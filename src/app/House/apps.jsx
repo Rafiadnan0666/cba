@@ -510,6 +510,8 @@ const LEVELS = {
   easy: { depth: 1, jitter: 60, label: "Ey-Ay: Rookie" },
   normal: { depth: 2, jitter: 12, label: "Ey-Ay: Tactician" },
   hard: { depth: 3, jitter: 0, label: "Ey-Ay: Grandmaster" },
+  emperor: { depth: 4, jitter: 0, label: "Ey-Ay: Emperor" },
+  primordial: { depth: 5, jitter: 0, label: "Ey-Ay: Primordial" },
 };
 
 export function ChessBody({ muted }) {
