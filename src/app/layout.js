@@ -16,8 +16,11 @@ const geistMono = localFont({
 export const metadata = {
   metadataBase: new URL("https://rafiadnan.my.id"),
   title: {
-    default: "Rafi Adnan â€“ Web & Game Developer",
+    default: "Rafi Adnan – Web & Game Developer",
     template: "%s | Rafi Adnan",
+  },
+  verification: {
+    google: "ivtYsZmMHgJ4lM3BANW_mGUT2CJMHX_1sDV1kx9GWLg",
   },
   description:
     "Fullâ€‘stack web & indie game developer based in Indonesia. Specialising in React, Laravel, Unity, and procedural madness.",
