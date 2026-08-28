@@ -37,7 +37,7 @@ export const PROJECTS = [
     title: "ClrBlind",
     desc: "Privacy-first accessibility app for color-blind users. Real-time object detection, rupiah recognition, OCR and scene narration, all running fully on-device in the browser.",
     img: "https://img.itch.zone/aW1nLzE4Nzk0Njg5LnBuZw==/original/FsHEyg.png",
-    live: "https://colorblind-alpha.vercel.app",
+    live: "https://collind.vercel.app",
     repo: "https://github.com/Rafiadnan0666/color-blind",
     tags: ["SvelteKit", "ONNX Runtime", "TensorFlow.js"],
   },
@@ -53,6 +53,7 @@ export const PROJECTS = [
     title: "Disaster Tracker",
     desc: "Live earthquake and weather monitoring dashboard with a server-side risk analysis engine, alerting and trend charts.",
     img: "https://img.itch.zone/aW1nLzI0ODcyNjI1LnBuZw==/original/BZlGcM.png",
+    live: "https://disaster-tracker.vercel.app",
     repo: "https://github.com/Rafiadnan0666/disaster-svelte",
     tags: ["SvelteKit", "MongoDB", "Leaflet"],
   },
@@ -73,43 +74,14 @@ export const PROJECTS = [
     tags: ["Next.js 15", "TypeScript", "Tailwind"],
   },
   {
-    title: "SummitPeak",
-    desc: "Full outdoor-gear e-commerce platform with product variants, customer reviews, saved addresses and complete checkout flow.",
-    img: "https://placehold.co/600x400/e8efe2/2c6e2c?text=SummitPeak",
-    repo: "https://github.com/Rafiadnan0666",
-    tags: ["CodeIgniter 4", "MySQL", "Neubrutalism"],
-  },
-  {
-    title: "Ey-Ay",
-    desc: "AI desktop assistant built with Node.js and custom voice interaction. Part productivity tool, part lonely coder friend.",
-    img: "https://placehold.co/600x400/fdeee0/b3541e?text=Ey-Ay",
-    repo: "https://github.com/Rafiadnan0666/Ey-Ay",
-    tags: ["Node.js", "Python", "Voice AI"],
-  },
-  {
     title: "Business Finder",
     desc: "Responsive business directory web app built for easy listing, search and filtering.",
     img: "https://placehold.co/600x400/e3ecf7/12439e?text=Business+Finder",
-    live: "https://business-finder-cyan.vercel.app",
+    live: "https://busfind.vercel.app",
     repo: "https://github.com/Rafiadnan0666/business-finder",
     tags: ["Next.js", "JavaScript"],
   },
-  {
-    title: "Ollama Copilot",
-    desc: "Web copilot powered by locally hosted Ollama models. Chat with your own LLM, completely privately.",
-    img: "https://placehold.co/600x400/14181f/7ee787?text=Ollama+Copilot",
-    live: "https://ollama-copilot.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/ollama-copilot",
-    tags: ["TypeScript", "Ollama", "LLM"],
-  },
-  {
-    title: "PyCommerce",
-    desc: "Python-powered storefront with catalog, cart and order flow deployed on Vercel.",
-    img: "https://placehold.co/600x400/fdf3d8/a07c0f?text=PyCommerce",
-    live: "https://pyecommerce.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/pyecommerce",
-    tags: ["Python", "E-commerce"],
-  },
+
 ];
 
 export const ITCH_GAMES = [
@@ -195,13 +167,12 @@ FACTS ABOUT RAFI ADNAN:
 - Web stack: React, Next.js, TypeScript, JavaScript, Laravel/PHP, CodeIgniter, Tailwind CSS, SvelteKit, Supabase, MySQL, MongoDB, Node.js.
 - Game stack: Unity, C#, Shader Graph, NavMesh AI, procedural generation.
 - Flagship projects:
-  * ClrBlind: privacy-first accessibility app for color-blind users; real-time object detection, Indonesian rupiah recognition, OCR and scene narration running fully on-device (SvelteKit, ONNX Runtime Web, TensorFlow.js). Live: https://colorblind-alpha.vercel.app
+  * ClrBlind: privacy-first accessibility app for color-blind users; real-time object detection, Indonesian rupiah recognition, OCR and scene narration running fully on-device (SvelteKit, ONNX Runtime Web, TensorFlow.js). Live: https://collind.vercel.app
   * Tabwise: collaborative research platform with AI insights and real-time co-editing (Next.js, TypeScript, Supabase). Live: https://gugel-ebon.vercel.app
-  * Disaster Tracker: live earthquake/weather monitoring dashboard with risk analysis engine (SvelteKit, MongoDB, Leaflet, Chart.js).
+  * Disaster Tracker: live earthquake/weather monitoring dashboard with risk analysis engine (SvelteKit, MongoDB, Leaflet, Chart.js). Live: https://disaster-tracker.vercel.app
   * Ideas: real-time team collaboration platform like Notion/Linear (Next.js, Supabase Realtime). Live: https://ideas-wheat.vercel.app
   * FACTORY 404: quantum manufacturing terminal web toy (Next.js 15). Live: https://factoryy.vercel.app
-  * SummitPeak: outdoor gear e-commerce with variants, reviews, checkout (CodeIgniter 4).
-  * Ey-Ay: AI desktop assistant with voice interaction (Node.js, Python).
+  * Business Finder: responsive business directory web app (Next.js). Live: https://busfind.vercel.app
 - Indie games published as "Gregrsea 975" on itch.io: Distortion Protocol (tactical RPG), Ghost, Time Loop, Artifact Fetching for Dummies, END, bear, Kaiju Commander, FACTORY, Mabar Rek. Profile: https://gregrsea-975.itch.io
 - GitHub: https://github.com/Rafiadnan0666 | Website: https://rafiadnan.my.id
 - He also produces electronic/dubstep music ("Joy Theme" on Spotify).
@@ -219,7 +190,7 @@ export const FALLBACK_ANSWERS = [
   },
   {
     k: ["clrblind", "color blind", "accessib", "a11y"],
-    a: "ClrBlind is his flagship: an AI accessibility app for color-blind users. Object detection, rupiah recognition and OCR run 100% on-device. Zero uploads. Try it live: https://colorblind-alpha.vercel.app",
+    a: "ClrBlind is his flagship: an AI accessibility app for color-blind users. Object detection, rupiah recognition and OCR run 100% on-device. Zero uploads. Try it live: https://collind.vercel.app",
   },
   {
     k: ["game", "itch", "unity", "play"],
