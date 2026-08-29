@@ -81,7 +81,8 @@ export default function Resume() {
                   <p className="text-gray-700">
                     Versatile developer with experience in web and game development. Passionate about building efficient, 
                     user-friendly applications and immersive game experiences. Strong problem-solving skills and ability 
-                    to quickly adapt to new technologies.
+                    to quickly adapt to new technologies. BNSP Certified Web Developer with 40+ repositories across web, 
+                    mobile, and game dev. 3rd Place Portfolio Competition 2025. Published 9 games on Itch.io as Gregrsea 975.
                   </p>
                 </section>
 
@@ -92,7 +93,7 @@ export default function Resume() {
                   <div className="mb-6">
                     <div className="flex justify-between items-start">
                       <h3 className="font-bold text-gray-800">Web Developer Intern</h3>
-                      <span className="text-sm text-gray-600">Feb 2024 â€“ Jul 2024</span>
+                      <span className="text-sm text-gray-600">Feb 2024 – Jul 2024</span>
                     </div>
                     <p className="text-gray-600 text-sm mb-2">YBM PLN</p>
                     <ul className="list-disc pl-5 mt-2 space-y-1 text-gray-700 text-sm">
@@ -105,7 +106,7 @@ export default function Resume() {
                   <div className="mb-6">
                     <div className="flex justify-between items-start">
                       <h3 className="font-bold text-gray-800">Freelance Full-Stack Developer</h3>
-                      <span className="text-sm text-gray-600">2023 â€“ Present</span>
+                      <span className="text-sm text-gray-600">2023 – Present</span>
                     </div>
                     <ul className="list-disc pl-5 mt-2 space-y-1 text-gray-700 text-sm">
                       <li>Developed full-stack applications using Laravel, Next.js, and Supabase</li>
@@ -117,34 +118,64 @@ export default function Resume() {
                   <div>
                     <div className="flex justify-between items-start">
                       <h3 className="font-bold text-gray-800">Indie Game Developer</h3>
-                      <span className="text-sm text-gray-600">2022 â€“ Present</span>
+                      <span className="text-sm text-gray-600">2022 – Present</span>
                     </div>
                     <ul className="list-disc pl-5 mt-2 space-y-1 text-gray-700 text-sm">
                       <li>Developed Unity-based games including FPS horror and roguelike shooters</li>
                       <li>Implemented procedural generation, AI systems, and custom gameplay mechanics</li>
-                      <li>Published projects on Itch.io with growing community engagement</li>
+                      <li>Published 9 projects on Itch.io (Gregrsea 975) with growing community engagement</li>
                     </ul>
                   </div>
                 </section>
 
                 {/* Projects */}
                 <section>
-                  <h2 className="text-xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-200">PROJECTS</h2>
+                  <h2 className="text-xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-200">SELECTED PROJECTS</h2>
                   <div className="grid grid-cols-1 gap-4">
                     <div className="border border-gray-200 p-4 rounded">
-                      <h3 className="font-bold text-gray-800">SignalDeck</h3>
-                      <p className="text-sm text-gray-600 mb-2">Real-time event listener dashboard (Next.js + Supabase)</p>
-                      <p className="text-xs text-gray-500">Features: WebSocket integration, real-time updates, user authentication</p>
+                      <h3 className="font-bold text-gray-800">ClrBlind</h3>
+                      <p className="text-sm text-gray-600 mb-2">Privacy-first AI accessibility app for color-blind users</p>
+                      <p className="text-xs text-gray-500">SvelteKit, ONNX Runtime Web, TensorFlow.js · On-device object detection, rupiah recognition, OCR · <a href="https://collind.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/color-blind" className="text-blue-600 hover:underline">Source</a></p>
                     </div>
                     <div className="border border-gray-200 p-4 rounded">
-                      <h3 className="font-bold text-gray-800">Vaultify</h3>
-                      <p className="text-sm text-gray-600 mb-2">Idea management system with tagging and search</p>
-                      <p className="text-xs text-gray-500">Built with: Laravel, MySQL, Tailwind CSS</p>
+                      <h3 className="font-bold text-gray-800">Tabwise (gugel)</h3>
+                      <p className="text-sm text-gray-600 mb-2">Collaborative research platform with AI-powered insights</p>
+                      <p className="text-xs text-gray-500">Next.js, TypeScript, Supabase · Real-time co-editing, team management, draft quality assessment · <a href="https://gugel-ebon.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/gugel" className="text-blue-600 hover:underline">Source</a></p>
                     </div>
                     <div className="border border-gray-200 p-4 rounded">
-                      <h3 className="font-bold text-gray-800">Artifact Fetching For Dummies</h3>
-                      <p className="text-sm text-gray-600 mb-2">Unity horror parkour game</p>
-                      <p className="text-xs text-gray-500">Features: Custom physics, enemy AI, dynamic lighting</p>
+                      <h3 className="font-bold text-gray-800">Disaster Tracker</h3>
+                      <p className="text-sm text-gray-600 mb-2">Live earthquake & weather monitoring dashboard</p>
+                      <p className="text-xs text-gray-500">SvelteKit, MongoDB, Leaflet, Chart.js · Server-side risk analysis, alerting, trend charts · <a href="https://disaster-tracker.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/disaster-svelte" className="text-blue-600 hover:underline">Source</a></p>
+                    </div>
+                    <div className="border border-gray-200 p-4 rounded">
+                      <h3 className="font-bold text-gray-800">CBA Portfolio</h3>
+                      <p className="text-sm text-gray-600 mb-2">Windows XP themed portfolio with ΩMEGA chess (depth 12 unbeatable AI)</p>
+                      <p className="text-xs text-gray-500">Next.js 15, React, Tailwind, Chess.js · Working Minesweeper, Snake, Tetris, Paint, AI Assistant · <a href="https://www.rafiadnan.my.id" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/cba" className="text-blue-600 hover:underline">Source</a></p>
+                    </div>
+                    <div className="border border-gray-200 p-4 rounded">
+                      <h3 className="font-bold text-gray-800">FACTORY 404</h3>
+                      <p className="text-sm text-gray-600 mb-2">Quantum manufacturing terminal with retro-cyberpunk interface</p>
+                      <p className="text-xs text-gray-500">Next.js 15, TypeScript, Tailwind · Google site verification · <a href="https://factoryy.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/factory-1" className="text-blue-600 hover:underline">Source</a></p>
+                    </div>
+                    <div className="border border-gray-200 p-4 rounded">
+                      <h3 className="font-bold text-gray-800">Business Finder</h3>
+                      <p className="text-sm text-gray-600 mb-2">Responsive business directory web app</p>
+                      <p className="text-xs text-gray-500">Next.js, JavaScript · Search, filtering, listing · <a href="https://busfind.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/business-finder" className="text-blue-600 hover:underline">Source</a></p>
+                    </div>
+                    <div className="border border-gray-200 p-4 rounded">
+                      <h3 className="font-bold text-gray-800">Itch.io Games (Gregrsea 975)</h3>
+                      <p className="text-sm text-gray-600 mb-2">9 published Unity games: Distortion Protocol, Time Loop, END, bear, Ghost, Kaiju Commander, FACTORY, Mabar Rek, Artifact Fetching</p>
+                      <p className="text-xs text-gray-500">Unity, C#, Shader Graph, NavMesh AI, Procedural Generation · <a href="https://gregrsea-975.itch.io" className="text-blue-600 hover:underline">Profile</a></p>
+                    </div>
+                    <div className="border border-gray-200 p-4 rounded">
+                      <h3 className="font-bold text-gray-800">Ollama Copilot</h3>
+                      <p className="text-sm text-gray-600 mb-2">AI coding assistant powered by local Ollama models</p>
+                      <p className="text-xs text-gray-500">Next.js, Ollama, AI · <a href="https://ollama-copilot.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/ollama-copilot" className="text-blue-600 hover:underline">Source</a></p>
+                    </div>
+                    <div className="border border-gray-200 p-4 rounded">
+                      <h3 className="font-bold text-gray-800">POS App</h3>
+                      <p className="text-sm text-gray-600 mb-2">Point of Sale application with modern UI</p>
+                      <p className="text-xs text-gray-500">Next.js, React, Tailwind · <a href="https://pos-app-peach.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/pos-pake-jees" className="text-blue-600 hover:underline">Source</a></p>
                     </div>
                   </div>
                 </section>
@@ -158,19 +189,19 @@ export default function Resume() {
                   <div className="space-y-4">
                     <div>
                       <h3 className="font-medium text-gray-700">Frontend</h3>
-                      <p className="text-sm text-gray-600">React, Next.js, Tailwind CSS, JavaScript/TypeScript</p>
+                      <p className="text-sm text-gray-600">React, Next.js, Tailwind CSS, JavaScript/TypeScript, SvelteKit</p>
                     </div>
                     <div>
                       <h3 className="font-medium text-gray-700">Backend</h3>
-                      <p className="text-sm text-gray-600">Node.js, Laravel, Supabase, REST APIs, MySQL</p>
+                      <p className="text-sm text-gray-600">Node.js, Laravel, CodeIgniter, Supabase, REST APIs, MySQL, MongoDB</p>
                     </div>
                     <div>
                       <h3 className="font-medium text-gray-700">Game Development</h3>
-                      <p className="text-sm text-gray-600">Unity, C#, Shader Graph, AI Navigation</p>
+                      <p className="text-sm text-gray-600">Unity, C#, Shader Graph, AI Navigation, Procedural Generation</p>
                     </div>
                     <div>
-                      <h3 className="font-medium text-gray-700">Tools</h3>
-                      <p className="text-sm text-gray-600">Git, Vercel, DigitalOcean, Figma</p>
+                      <h3 className="font-medium text-gray-700">Tools & Cloud</h3>
+                      <p className="text-sm text-gray-600">Git, Vercel, DigitalOcean, Figma, Docker, CI/CD</p>
                     </div>
                   </div>
                 </section>
@@ -179,9 +210,9 @@ export default function Resume() {
                 <section>
                   <h2 className="text-xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-200">EDUCATION</h2>
                   <div>
-                    <h3 className="font-medium text-gray-700">[University Name]</h3>
-                    <p className="text-sm text-gray-600">Informatics Engineering</p>
-                    <p className="text-sm text-gray-600">2023 - Present (GPA: 4.00)</p>
+                    <h3 className="font-medium text-gray-700">Informatics Engineering</h3>
+                    <p className="text-sm text-gray-600">University in Indonesia</p>
+                    <p className="text-sm text-gray-600">2023 – Present (GPA: 4.00)</p>
                   </div>
                 </section>
 
@@ -190,7 +221,11 @@ export default function Resume() {
                   <h2 className="text-xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-200">CERTIFICATIONS</h2>
                   <div>
                     <h3 className="font-medium text-gray-700">BNSP Certified Web Developer</h3>
-                    <p className="text-sm text-gray-600">2024</p>
+                    <p className="text-sm text-gray-600">2024 — National Professional Certification Agency</p>
+                  </div>
+                  <div className="mt-3">
+                    <h3 className="font-medium text-gray-700">3rd Place Portfolio Competition</h3>
+                    <p className="text-sm text-gray-600">2025</p>
                   </div>
                 </section>
 
@@ -208,11 +243,19 @@ export default function Resume() {
                     </li>
                     <li className="flex items-center">
                       <span className="text-gray-700 w-24">LinkedIn:</span>
-                      <a href="https://linkedin.com/in/rafi-adnan" className="text-blue-600 hover:underline">linkedin.com/in/rafi-adnan</a>
+                      <a href="https://www.linkedin.com/in/rafi-adnan-a52141274/" className="text-blue-600 hover:underline">linkedin.com/in/rafi-adnan</a>
                     </li>
                     <li className="flex items-center">
                       <span className="text-gray-700 w-24">Itch.io:</span>
                       <a href="https://gregrsea-975.itch.io" className="text-blue-600 hover:underline">gregrsea-975.itch.io</a>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-gray-700 w-24">Fastwork:</span>
+                      <a href="https://fastwork.id/user/gregrsea" className="text-blue-600 hover:underline">fastwork.id/gregrsea</a>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-gray-700 w-24">Fiverr:</span>
+                      <a href="https://www.fiverr.com/s/1EA3XQ6" className="text-blue-600 hover:underline">fiverr.com/s/1EA3XQ6</a>
                     </li>
                   </ul>
                 </section>
