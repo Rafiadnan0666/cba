@@ -42,12 +42,36 @@ export const PROJECTS = [
     tags: ["SvelteKit", "ONNX Runtime", "TensorFlow.js"],
   },
   {
-    title: "Tabwise",
-    desc: "Collaborative research platform with shared sessions, AI-powered insights, real-time co-editing and team management.",
+    title: "Tabwise (gugel)",
+    desc: "Collaborative research platform with shared sessions, AI-powered insights, real-time co-editing and team management. Draft quality assessment and link analysis components.",
     img: "https://placehold.co/600x400/dce7fb/12439e?text=Tabwise",
     live: "https://gugel-ebon.vercel.app",
     repo: "https://github.com/Rafiadnan0666/gugel",
     tags: ["Next.js", "TypeScript", "Supabase"],
+  },
+  {
+    title: "CBA Portfolio",
+    desc: "Windows XP themed portfolio website with ΩMEGA chess tier (depth 12 unbeatable), contact links for Fastwork, Fiverr, Instagram, LinkedIn.",
+    img: "https://placehold.co/600x400/1a1a2e/00d4ff?text=CBA+Portfolio",
+    live: "https://www.rafiadnan.my.id",
+    repo: "https://github.com/Rafiadnan0666/cba",
+    tags: ["Next.js", "React", "Tailwind", "Chess.js"],
+  },
+  {
+    title: "Land Baru",
+    desc: "Landing page with security hardening, contrast fixes, GSAP animations, and cross-device layout fixes.",
+    img: "https://placehold.co/600x400/0f3460/e94560?text=Land+Baru",
+    live: "https://landbaru.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/landbaru",
+    tags: ["Next.js", "GSAP", "Tailwind"],
+  },
+  {
+    title: "School Web Example",
+    desc: "School website example with SvelteKit, Vercel adapter, and Font Awesome icons. Fixed Vercel 500 errors.",
+    img: "https://placehold.co/600x400/1b263b/00b4d8?text=School+Web",
+    live: "https://schoolwebexample.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/school-web",
+    tags: ["SvelteKit", "Vercel Adapter", "Font Awesome"],
   },
   {
     title: "Disaster Tracker",
@@ -67,7 +91,7 @@ export const PROJECTS = [
   },
   {
     title: "FACTORY 404",
-    desc: "Quantum manufacturing terminal. Command a futuristic production core through a retro-cyberpunk interface.",
+    desc: "Quantum manufacturing terminal. Command a futuristic production core through a retro-cyberpunk interface. Google site verification added.",
     img: "https://placehold.co/600x400/101418/39ff8b?text=FACTORY+404",
     live: "https://factoryy.vercel.app",
     repo: "https://github.com/Rafiadnan0666/factory-1",
@@ -75,13 +99,140 @@ export const PROJECTS = [
   },
   {
     title: "Business Finder",
-    desc: "Responsive business directory web app built for easy listing, search and filtering.",
+    desc: "Responsive business directory web app built for easy listing, search and filtering. Next.js 13.4.0 upgrade.",
     img: "https://placehold.co/600x400/e3ecf7/12439e?text=Business+Finder",
     live: "https://busfind.vercel.app",
     repo: "https://github.com/Rafiadnan0666/business-finder",
     tags: ["Next.js", "JavaScript"],
   },
-
+  {
+    title: "POS App",
+    desc: "Point of Sale application with updated profile page styles and layout components.",
+    img: "https://placehold.co/600x400/2d6a4f/95d5b2?text=POS+App",
+    live: "https://pos-app-peach.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/pos-pake-jees",
+    tags: ["Next.js", "React", "Tailwind"],
+  },
+  {
+    title: "Jasuke Nyoss",
+    desc: "Simple landing page project.",
+    img: "https://placehold.co/600x400/f77f00/fcbf49?text=Jasuke+Nyoss",
+    live: "https://jasukenyoss.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/jasukenyoss",
+    tags: ["Next.js", "JavaScript"],
+  },
+  {
+    title: "Bear Scratching Game",
+    desc: "Interactive bear scratching game.",
+    img: "https://placehold.co/600x400/8b5e3c/d4a574?text=Bear+Game",
+    live: "https://bear-scratching-game.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/bear-scratching-game",
+    tags: ["JavaScript", "Canvas", "Game"],
+  },
+  {
+    title: "Ahlul Qohwah Landing",
+    desc: "Landing page for Ahlul Qohwah.",
+    img: "https://placehold.co/600x400/1a1a2e/00d4ff?text=Ahlul+Qohwah",
+    live: "https://ahlulqohwah.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/ahlul-qohwah-landing",
+    tags: ["Next.js", "Tailwind"],
+  },
+  {
+    title: "Landing Start",
+    desc: "Initial landing page template.",
+    img: "https://placehold.co/600x400/2c3e50/ecf0f1?text=Landing+Start",
+    live: "https://landingstart.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/landingstart",
+    tags: ["Next.js", "JavaScript"],
+  },
+  {
+    title: "FACTORY (Clicker Game)",
+    desc: "Factory clicker game with Next.js security updates.",
+    img: "https://placehold.co/600x400/101418/39ff8b?text=FACTORY+Game",
+    live: "https://factory-silk.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/factory-clicker-game",
+    tags: ["Next.js", "Game", "TypeScript"],
+  },
+  {
+    title: "Ollama Copilot",
+    desc: "AI coding assistant powered by Ollama.",
+    img: "https://placehold.co/600x400/6c5ce7/a29bfe?text=Ollama+Copilot",
+    live: "https://ollama-copilot.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/ollama-copilot",
+    tags: ["Next.js", "Ollama", "AI"],
+  },
+  {
+    title: "QR Next",
+    desc: "QR code generator built with Next.js.",
+    img: "https://placehold.co/600x400/00b894/ffffff?text=QR+Next",
+    live: "https://qrnext-one.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/qrnext",
+    tags: ["Next.js", "QR Code"],
+  },
+  {
+    title: "URL to QR",
+    desc: "URL to QR code converter.",
+    img: "https://placehold.co/600x400/0984e3/ffffff?text=URL+to+QR",
+    live: "https://qrnext-psi.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/qrnext",
+    tags: ["Next.js", "QR Code"],
+  },
+  {
+    title: "Next.js Commerce",
+    desc: "E-commerce starter with Next.js.",
+    img: "https://placehold.co/600x400/1e3799/ffffff?text=Next.js+Commerce",
+    live: "https://nextjs-commerce-pink-ten-97.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/nextjs-commerce",
+    tags: ["Next.js", "Commerce", "Tailwind"],
+  },
+  {
+    title: "PyEcommerce",
+    desc: "Python-based e-commerce project.",
+    img: "https://placehold.co/600x400/306998/ffd43b?text=PyEcommerce",
+    live: "https://pyecommerce.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/pyecommerce",
+    tags: ["Python", "FastAPI", "Next.js"],
+  },
+  {
+    title: "Rafi Azure",
+    desc: "Personal project deployed on Azure.",
+    img: "https://placehold.co/600x400/0078d4/ffffff?text=Rafi+Azure",
+    live: "https://rafi-azure.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/rafi",
+    tags: ["Next.js", "Azure"],
+  },
+  {
+    title: "Feane 1.0.0",
+    desc: "Feane project v1.0.0.",
+    img: "https://placehold.co/600x400/6c5ce7/ffffff?text=Feane",
+    live: "https://feane-1-0-0.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/feane-1.0.0",
+    tags: ["Next.js", "React"],
+  },
+  {
+    title: "Furni 1.0.0",
+    desc: "Furniture e-commerce template v1.0.0.",
+    img: "https://placehold.co/600x400/2d3436/ffeaa7?text=Furni",
+    live: "https://furni-1-0-0-sepia.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/furni-1.0.0",
+    tags: ["Next.js", "E-commerce", "Tailwind"],
+  },
+  {
+    title: "Koppee 1.0.0",
+    desc: "Coffee shop template v1.0.0.",
+    img: "https://placehold.co/600x400/6f4e37/d7b49e?text=Koppee",
+    live: "https://koppee-1-0-0.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/Koppee-1.0.0",
+    tags: ["Next.js", "Tailwind"],
+  },
+  {
+    title: "Okelah",
+    desc: "Okelah project.",
+    img: "https://placehold.co/600x400/e17055/fdcb6e?text=Okelah",
+    live: "https://okelah-vert.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/okelah",
+    tags: ["Next.js", "JavaScript"],
+  },
 ];
 
 export const ITCH_GAMES = [
@@ -168,12 +319,14 @@ FACTS ABOUT RAFI ADNAN:
 - Game stack: Unity, C#, Shader Graph, NavMesh AI, procedural generation.
 - Flagship projects:
   * ClrBlind: privacy-first accessibility app for color-blind users; real-time object detection, Indonesian rupiah recognition, OCR and scene narration running fully on-device (SvelteKit, ONNX Runtime Web, TensorFlow.js). Live: https://collind.vercel.app
-  * Tabwise: collaborative research platform with AI insights and real-time co-editing (Next.js, TypeScript, Supabase). Live: https://gugel-ebon.vercel.app
+  * Tabwise (gugel): collaborative research platform with AI insights and real-time co-editing (Next.js, TypeScript, Supabase). Live: https://gugel-ebon.vercel.app
   * Disaster Tracker: live earthquake/weather monitoring dashboard with risk analysis engine (SvelteKit, MongoDB, Leaflet, Chart.js). Live: https://disaster-tracker.vercel.app
   * Ideas: real-time team collaboration platform like Notion/Linear (Next.js, Supabase Realtime). Live: https://ideas-wheat.vercel.app
   * FACTORY 404: quantum manufacturing terminal web toy (Next.js 15). Live: https://factoryy.vercel.app
   * Business Finder: responsive business directory web app (Next.js). Live: https://busfind.vercel.app
+  * CBA Portfolio: Windows XP themed portfolio with ΩMEGA chess (depth 12). Live: https://rafiadnan.my.id
 - Indie games published as "Gregrsea 975" on itch.io: Distortion Protocol (tactical RPG), Ghost, Time Loop, Artifact Fetching for Dummies, END, bear, Kaiju Commander, FACTORY, Mabar Rek. Profile: https://gregrsea-975.itch.io
+- 30+ projects on Vercel including: Land Baru, School Web, POS App, Bear Scratching Game, FACTORY Clicker Game, Ollama Copilot, QR Next, Next.js Commerce, Feane, Furni, Koppee, and more.
 - GitHub: https://github.com/Rafiadnan0666 | Website: https://rafiadnan.my.id
 - He also produces electronic/dubstep music ("Joy Theme" on Spotify).
 
