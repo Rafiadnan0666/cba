@@ -16,21 +16,25 @@ const geistMono = localFont({
 export const metadata = {
   metadataBase: new URL("https://rafiadnan.my.id"),
   title: {
-    default: "Rafi Adnan – Web & Game Developer",
+    default: "Rafi Adnan – Web, Mobile & Game Developer",
     template: "%s | Rafi Adnan",
   },
   verification: {
     google: "ivtYsZmMHgJ4lM3BANW_mGUT2CJMHX_1sDV1kx9GWLg",
   },
   description:
-    "Fullâ€‘stack web & indie game developer based in Indonesia. Specialising in React, Laravel, Unity, and procedural madness.",
+    "Full-stack web, mobile & indie game developer based in Indonesia. React, Next.js, Laravel, Flutter, Unity and on-device AI.",
 
   keywords: [
     "Rafi Adnan",
     "Web Developer",
+    "Mobile Developer",
     "Game Developer",
     "React",
+    "Next.js",
     "Laravel",
+    "Flutter",
+    "SvelteKit",
     "Unity",
     "Tailwind",
     "Portfolio",
@@ -41,9 +45,9 @@ export const metadata = {
   publisher: "Rafi Adnan",
 
   openGraph: {
-    title: "Rafi Adnan â€“ Web & Game Developer",
+    title: "Rafi Adnan – Web, Mobile & Game Developer",
     description:
-      "Showcasing projects in web development, indie games, and everything in between.",
+      "Web apps, mobile experiments, on-device AI and indie games. Built by Rafi Adnan in Indonesia.",
     url: "https://rafiadnan.my.id",
     siteName: "rafiadnan.my.id",
     images: [
@@ -60,9 +64,9 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Rafi Adnan | Web & Game Dev",
+    title: "Rafi Adnan | Web, Mobile & Game Dev",
     description:
-      "Full-stack web & indie game developer. React, Laravel, Unity. Let's build something awesome.",
+      "Full-stack web, mobile & indie game developer. React, Laravel, Flutter, Unity. Let's build something awesome.",
     images: ["/og-image.png"],
   },
 

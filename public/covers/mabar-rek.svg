@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="508" height="254" viewBox="0 0 508 254" role="img" aria-label="Mabar Rek cover">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#06111d" />
+      <stop offset="0.58" stop-color="#0c3040" />
+      <stop offset="1" stop-color="#07141c" />
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c2e35" />
+      <stop offset="1" stop-color="#03090d" />
+    </linearGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7c2" />
+      <stop offset="0.55" stop-color="#ffd84a" />
+      <stop offset="1" stop-color="#ff8a1f" />
+    </linearGradient>
+    <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#000" opacity="0.18" />
+    </pattern>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4" result="b" />
+      <feMerge>
+        <feMergeNode in="b" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="508" height="254" fill="url(#sky)" />
+  <circle cx="254" cy="88" r="78" fill="#ff3b30" opacity="0.16" />
+  <circle cx="254" cy="88" r="52" fill="#ff5b4a" opacity="0.12" />
+
+  <path d="M0 146 L52 118 L94 136 L138 102 L184 132 L228 112 L272 134 L318 104 L362 130 L408 108 L452 134 L508 116 V170 H0 Z" fill="#041218" opacity="0.92" />
+  <path d="M0 146 L52 118 L94 136 L138 102 L184 132 L228 112 L272 134 L318 104 L362 130 L408 108 L452 134 L508 116" fill="none" stroke="#29e0c4" stroke-opacity="0.35" stroke-width="1.5" />
+
+  <g stroke="#39ff8b" stroke-opacity="0.26" stroke-width="1">
+    <path d="M0 254 L190 150 M72 254 L211 150 M144 254 L230 150 M216 254 L248 150 M292 254 L260 150 M364 254 L278 150 M436 254 L296 150 M508 254 L314 150" />
+    <path d="M0 173 H508 M0 194 H508 M0 218 H508 M0 244 H508" />
+  </g>
+  <rect y="150" width="508" height="104" fill="url(#floor)" opacity="0.72" />
+
+  <g filter="url(#glow)">
+    <text x="254" y="91" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="43" font-weight="900" letter-spacing="7" fill="url(#title)" stroke="#38140a" stroke-width="2">MABAR</text>
+    <text x="254" y="136" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="53" font-weight="900" letter-spacing="12" fill="url(#title)" stroke="#38140a" stroke-width="2">REK</text>
+  </g>
+
+  <g font-family="Consolas, 'Courier New', monospace" fill="#ccfff4" font-size="10" letter-spacing="2">
+    <text x="254" y="157" text-anchor="middle" opacity="0.9">20-PLAYER FPS · WINDOWS</text>
+    <text x="254" y="235" text-anchor="middle" opacity="0.55">GREG RSEA 975 · BUILD 1.0</text>
+  </g>
+
+  <g stroke="#39ff8b" stroke-width="1.4" opacity="0.7">
+    <circle cx="254" cy="196" r="12" fill="none" />
+    <path d="M254 179 V188 M254 204 V213 M237 196 H246 M262 196 H271" />
+  </g>
+
+  <rect width="508" height="254" fill="url(#scan)" />
+  <rect x="5" y="5" width="498" height="244" fill="none" stroke="#29e0c4" stroke-opacity="0.35" />
+</svg>

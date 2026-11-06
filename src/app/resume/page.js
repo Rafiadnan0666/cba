@@ -62,7 +62,7 @@ export default function Resume() {
             <div className="flex flex-col md:flex-row md:justify-between md:items-end">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">Rafi Adnan</h1>
-                <h2 className="text-xl text-gray-600 mt-1">Full Stack Developer & Game Developer</h2>
+                <h2 className="text-xl text-gray-600 mt-1">Full Stack Web, Mobile &amp; Game Developer</h2>
               </div>
               <div className="mt-4 md:mt-0">
                 <p className="text-gray-700">fn234561@gmail.com</p>
@@ -79,10 +79,10 @@ export default function Resume() {
                 <section>
                   <h2 className="text-xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-200">PROFILE</h2>
                   <p className="text-gray-700">
-                    Versatile developer with experience in web and game development. Passionate about building efficient, 
-                    user-friendly applications and immersive game experiences. Strong problem-solving skills and ability 
-                    to quickly adapt to new technologies. BNSP Certified Web Developer with 40+ repositories across web, 
-                    mobile, and game dev. 3rd Place Portfolio Competition 2025. Published 9 games on Itch.io as Gregrsea 975.
+                    Versatile developer with experience in web, mobile, and game development. Passionate about building
+                    efficient, user-friendly applications, on-device AI features, and immersive game experiences.
+                    BNSP Certified Web Developer with 66 repositories (38 public), 334 contributions in the last year,
+                    and 39 GitHub stars. 3rd Place Portfolio Competition 2025. Published 9 games on Itch.io as Gregrsea 975.
                   </p>
                 </section>
 
@@ -109,9 +109,9 @@ export default function Resume() {
                       <span className="text-sm text-gray-600">2023 – Present</span>
                     </div>
                     <ul className="list-disc pl-5 mt-2 space-y-1 text-gray-700 text-sm">
-                      <li>Developed full-stack applications using Laravel, Next.js, and Supabase</li>
-                      <li>Created interactive UIs, real-time dashboards, and custom backend solutions</li>
-                      <li>Built various tools including link hubs and idea management systems</li>
+                      <li>Developed full-stack applications using Laravel, CodeIgniter 4, Next.js, SvelteKit, and Supabase</li>
+                      <li>Built Flutter mobile apps with on-device machine learning using TensorFlow Lite</li>
+                      <li>Created real-time dashboards, POS/e-commerce systems, accessibility tools, and custom backends</li>
                     </ul>
                   </div>
                   
@@ -133,49 +133,49 @@ export default function Resume() {
                   <h2 className="text-xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-200">SELECTED PROJECTS</h2>
                   <div className="grid grid-cols-1 gap-4">
                     <div className="border border-gray-200 p-4 rounded">
+                      <h3 className="font-bold text-gray-800">Awake Alarm</h3>
+                      <p className="text-sm text-gray-600 mb-2">Non-dismissable Android alarm that stops only after math or a real-object scan</p>
+                      <p className="text-xs text-gray-500">Flutter, Dart, TensorFlow Lite, on-device ML · Beta APK v1.0.2 · <a href="https://github.com/Rafiadnan0666/bangun" className="text-blue-600 hover:underline">Source</a> | <a href="https://github.com/Rafiadnan0666/bangun/releases/download/v1.0.2-beta/app-release.apk" className="text-blue-600 hover:underline">Download APK</a></p>
+                    </div>
+                    <div className="border border-gray-200 p-4 rounded">
+                      <h3 className="font-bold text-gray-800">SIBI Translator</h3>
+                      <p className="text-sm text-gray-600 mb-2">Webcam Indonesian sign-language translator with sentence prediction and speech</p>
+                      <p className="text-xs text-gray-500">Python, TensorFlow, Text-to-Speech · Recognises SIBI alphabet, builds words and speaks sentences · <a href="https://sibii.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/sibi" className="text-blue-600 hover:underline">Source</a></p>
+                    </div>
+                    <div className="border border-gray-200 p-4 rounded">
+                      <h3 className="font-bold text-gray-800">ABS — Attendance &amp; Employee Management</h3>
+                      <p className="text-sm text-gray-600 mb-2">Self-hosted HR and attendance system with GPS check-in and approvals</p>
+                      <p className="text-xs text-gray-500">Laravel 13, MySQL, RBAC, MIT · Leave management, reimbursement approvals, GPS check-in · <a href="https://github.com/Rafiadnan0666/absen-laravel" className="text-blue-600 hover:underline">Source</a></p>
+                    </div>
+                    <div className="border border-gray-200 p-4 rounded">
                       <h3 className="font-bold text-gray-800">ClrBlind</h3>
-                      <p className="text-sm text-gray-600 mb-2">Privacy-first AI accessibility app for color-blind users</p>
-                      <p className="text-xs text-gray-500">SvelteKit, ONNX Runtime Web, TensorFlow.js · On-device object detection, rupiah recognition, OCR · <a href="https://collind.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/color-blind" className="text-blue-600 hover:underline">Source</a></p>
+                      <p className="text-sm text-gray-600 mb-2">Privacy-first AI accessibility app for colour-blind users</p>
+                      <p className="text-xs text-gray-500">SvelteKit, ONNX Runtime Web, TensorFlow.js · On-device object, colour, currency, medicine and OCR detection · <a href="https://collind.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/color-blind" className="text-blue-600 hover:underline">Source</a></p>
                     </div>
                     <div className="border border-gray-200 p-4 rounded">
                       <h3 className="font-bold text-gray-800">Tabwise (gugel)</h3>
-                      <p className="text-sm text-gray-600 mb-2">Collaborative research platform with AI-powered insights</p>
-                      <p className="text-xs text-gray-500">Next.js, TypeScript, Supabase · Real-time co-editing, team management, draft quality assessment · <a href="https://gugel-ebon.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/gugel" className="text-blue-600 hover:underline">Source</a></p>
+                      <p className="text-sm text-gray-600 mb-2">Collaborative research platform with AI summaries and real-time co-editing</p>
+                      <p className="text-xs text-gray-500">Next.js, TypeScript, Supabase · Shared research tabs, team management, Chrome extension · <a href="https://gugel-ebon.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/gugel" className="text-blue-600 hover:underline">Source</a></p>
                     </div>
                     <div className="border border-gray-200 p-4 rounded">
-                      <h3 className="font-bold text-gray-800">Disaster Tracker</h3>
-                      <p className="text-sm text-gray-600 mb-2">Live earthquake & weather monitoring dashboard</p>
-                      <p className="text-xs text-gray-500">SvelteKit, MongoDB, Leaflet, Chart.js · Server-side risk analysis, alerting, trend charts · <a href="https://disaster-tracker.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/disaster-svelte" className="text-blue-600 hover:underline">Source</a></p>
+                      <h3 className="font-bold text-gray-800">Outdoor Gear POS</h3>
+                      <p className="text-sm text-gray-600 mb-2">Point-of-sale and e-commerce system for an outdoor gear store</p>
+                      <p className="text-xs text-gray-500">CodeIgniter 4, MySQL, Midtrans, Biteship · Multi-attribute variants, walk-in POS dashboard, payment and shipping integrations · <a href="https://github.com/Rafiadnan0666/pos-ci4" className="text-blue-600 hover:underline">Source</a></p>
+                    </div>
+                    <div className="border border-gray-200 p-4 rounded">
+                      <h3 className="font-bold text-gray-800">Wavan Coffee Roastery</h3>
+                      <p className="text-sm text-gray-600 mb-2">Corporate and product website for a Lampung coffee roastery</p>
+                      <p className="text-xs text-gray-500">Svelte, SEO, responsive product catalogue · <a href="https://wavancoffee.vercel.app" className="text-blue-600 hover:underline">Live</a></p>
                     </div>
                     <div className="border border-gray-200 p-4 rounded">
                       <h3 className="font-bold text-gray-800">CBA Portfolio</h3>
-                      <p className="text-sm text-gray-600 mb-2">Windows XP themed portfolio with ΩMEGA chess (depth 12 unbeatable AI)</p>
-                      <p className="text-xs text-gray-500">Next.js 15, React, Tailwind, Chess.js · Working Minesweeper, Snake, Tetris, Paint, AI Assistant · <a href="https://www.rafiadnan.my.id" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/cba" className="text-blue-600 hover:underline">Source</a></p>
-                    </div>
-                    <div className="border border-gray-200 p-4 rounded">
-                      <h3 className="font-bold text-gray-800">FACTORY 404</h3>
-                      <p className="text-sm text-gray-600 mb-2">Quantum manufacturing terminal with retro-cyberpunk interface</p>
-                      <p className="text-xs text-gray-500">Next.js 15, TypeScript, Tailwind · Google site verification · <a href="https://factoryy.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/factory-1" className="text-blue-600 hover:underline">Source</a></p>
-                    </div>
-                    <div className="border border-gray-200 p-4 rounded">
-                      <h3 className="font-bold text-gray-800">Business Finder</h3>
-                      <p className="text-sm text-gray-600 mb-2">Responsive business directory web app</p>
-                      <p className="text-xs text-gray-500">Next.js, JavaScript · Search, filtering, listing · <a href="https://busfind.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/business-finder" className="text-blue-600 hover:underline">Source</a></p>
+                      <p className="text-sm text-gray-600 mb-2">Windows XP themed portfolio with working games and an on-device AI assistant</p>
+                      <p className="text-xs text-gray-500">Next.js 15, React, Chess.js · Minesweeper, Snake, Tetris, Paint, Gemini Nano assistant · <a href="https://www.rafiadnan.my.id" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/cba" className="text-blue-600 hover:underline">Source</a></p>
                     </div>
                     <div className="border border-gray-200 p-4 rounded">
                       <h3 className="font-bold text-gray-800">Itch.io Games (Gregrsea 975)</h3>
                       <p className="text-sm text-gray-600 mb-2">9 published Unity games: Distortion Protocol, Time Loop, END, bear, Ghost, Kaiju Commander, FACTORY, Mabar Rek, Artifact Fetching</p>
                       <p className="text-xs text-gray-500">Unity, C#, Shader Graph, NavMesh AI, Procedural Generation · <a href="https://gregrsea-975.itch.io" className="text-blue-600 hover:underline">Profile</a></p>
-                    </div>
-                    <div className="border border-gray-200 p-4 rounded">
-                      <h3 className="font-bold text-gray-800">Ollama Copilot</h3>
-                      <p className="text-sm text-gray-600 mb-2">AI coding assistant powered by local Ollama models</p>
-                      <p className="text-xs text-gray-500">Next.js, Ollama, AI · <a href="https://ollama-copilot.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/ollama-copilot" className="text-blue-600 hover:underline">Source</a></p>
-                    </div>
-                    <div className="border border-gray-200 p-4 rounded">
-                      <h3 className="font-bold text-gray-800">POS App</h3>
-                      <p className="text-sm text-gray-600 mb-2">Point of Sale application with modern UI</p>
-                      <p className="text-xs text-gray-500">Next.js, React, Tailwind · <a href="https://pos-app-peach.vercel.app" className="text-blue-600 hover:underline">Live</a> | <a href="https://github.com/Rafiadnan0666/pos-pake-jees" className="text-blue-600 hover:underline">Source</a></p>
                     </div>
                   </div>
                 </section>
@@ -193,7 +193,11 @@ export default function Resume() {
                     </div>
                     <div>
                       <h3 className="font-medium text-gray-700">Backend</h3>
-                      <p className="text-sm text-gray-600">Node.js, Laravel, CodeIgniter, Supabase, REST APIs, MySQL, MongoDB</p>
+                      <p className="text-sm text-gray-600">Node.js, Laravel 13, CodeIgniter 4, Supabase, REST APIs, MySQL, MongoDB</p>
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-gray-700">Mobile &amp; On-device AI</h3>
+                      <p className="text-sm text-gray-600">Flutter, Dart, Python, TensorFlow Lite, TensorFlow.js, ONNX Runtime Web</p>
                     </div>
                     <div>
                       <h3 className="font-medium text-gray-700">Game Development</h3>
@@ -248,6 +252,10 @@ export default function Resume() {
                     <li className="flex items-center">
                       <span className="text-gray-700 w-24">Itch.io:</span>
                       <a href="https://gregrsea-975.itch.io" className="text-blue-600 hover:underline">gregrsea-975.itch.io</a>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-gray-700 w-24">Instagram:</span>
+                      <a href="https://www.instagram.com/gregrsea_ninesevenfive/" className="text-blue-600 hover:underline">@gregrsea_ninesevenfive</a>
                     </li>
                     <li className="flex items-center">
                       <span className="text-gray-700 w-24">Fastwork:</span>

@@ -6,12 +6,69 @@ import { AVATAR } from "./data";
 export function PowerScreen({ onStart }) {
   return (
     <div className="power-screen" onClick={onStart}>
-      <div className="power-btn">
-        <svg width="30" height="30" viewBox="0 0 24 24">
-          <path d="M12 3 a1.6 1.6 0 0 1 1.6 1.6 v7 a1.6 1.6 0 0 1 -3.2 0 v-7 A1.6 1.6 0 0 1 12 3 Z M6.3 6.9 a1.6 1.6 0 0 1 0 2.26 a7 7 0 1 0 11.4 0 a1.6 1.6 0 1 1 2.26 -2.26 a10.2 10.2 0 1 1 -15.92 0 a1.6 1.6 0 0 1 2.26 0 Z" />
-        </svg>
+      <div className="retro-rig">
+        <div className="retro-rig-top">
+          <span className="retro-brand">RAFIOS</span>
+          <span className="retro-model">MODEL XP-2003</span>
+        </div>
+
+        <div className="retro-drive-row">
+          <div className="retro-drive">
+            <span className="retro-slot" />
+            <span className="retro-drive-label">5.25&quot; FLOPPY</span>
+          </div>
+          <div className="retro-drive small">
+            <span className="retro-slot" />
+            <span className="retro-drive-label">3.5&quot;</span>
+          </div>
+        </div>
+
+        <div className="retro-badge-row">
+          <span className="retro-badge">PENTIUM III</span>
+          <span className="retro-badge">128 MB RAM</span>
+          <span className="retro-badge">56K READY</span>
+        </div>
+
+        <div className="retro-vent-row" aria-hidden="true">
+          {Array.from({ length: 14 }).map((_, i) => (
+            <span key={i} />
+          ))}
+        </div>
+
+        <div className="retro-controls">
+          <button
+            type="button"
+            className="retro-power"
+            aria-label="Power on"
+            autoFocus
+            onClick={(e) => {
+              e.stopPropagation();
+              onStart();
+            }}
+          >
+            <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3 a1.6 1.6 0 0 1 1.6 1.6 v7 a1.6 1.6 0 0 1 -3.2 0 v-7 A1.6 1.6 0 0 1 12 3 Z M6.3 6.9 a1.6 1.6 0 0 1 0 2.26 a7 7 0 1 0 11.4 0 a1.6 1.6 0 1 1 2.26 -2.26 a10.2 10.2 0 1 1 -15.92 0 a1.6 1.6 0 0 1 2.26 0 Z" />
+            </svg>
+            <span>POWER</span>
+          </button>
+
+          <div className="retro-led-group" aria-hidden="true">
+            <span className="retro-led green" />
+            <span className="retro-led amber" />
+          </div>
+
+          <div className="retro-turbo" aria-hidden="true">
+            <span>TURBO</span>
+            <span className="retro-turbo-btn" />
+          </div>
+        </div>
+
+        <div className="retro-foot">RAFIOS BIOS v2.06 · 2003</div>
       </div>
-      <div className="power-text">CLICK TO POWER ON</div>
+
+      <div className="power-text">PRESS THE POWER BUTTON</div>
+      <div className="power-subtext">CRT warming up · click anywhere or hit Enter</div>
+      <div className="power-footer">© 2003 RAFISOFT · HAND-BUILT WITH NEXT.JS</div>
     </div>
   );
 }
@@ -219,7 +276,7 @@ export function WelcomeDialog({ onClose, onProjects }) {
         <XpFlag size={40} />
         <div>
           <div style={{ fontWeight: "bold", fontSize: 13, color: "#0c3290" }}>Hi, I&apos;m Rafi Adnan</div>
-          <div style={{ fontSize: 10, color: "#555" }}>Full-stack developer &amp; indie game dev, Indonesia</div>
+          <div style={{ fontSize: 10, color: "#555" }}>Web, mobile &amp; indie game developer, Indonesia</div>
         </div>
       </div>
       <div className="dialog-content-row">
@@ -260,7 +317,7 @@ export function AboutDialog({ onClose }) {
         <br />
         <b>Award:</b> 3rd Place, Portfolio Competition 2025
         <br />
-        <b>Stack:</b> Next.js · React · Laravel · Unity
+        <b>Stack:</b> Next.js · React · Laravel · Flutter · Unity
         <br />
         <b>Chess Engine:</b> Ey-Ay v1.0 (minimax + alpha-beta)
         <br />

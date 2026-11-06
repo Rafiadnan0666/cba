@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RafiOS — Rafi Adnan's Windows XP Portfolio
 
-## Getting Started
+A hand-built Windows XP desktop portfolio for **Rafi Adnan**, a full-stack web, mobile and indie game developer based in Indonesia.
 
-First, run the development server:
+**Live site:** [rafiadnan.my.id](https://www.rafiadnan.my.id)
+
+## What's inside
+
+- Retro power-on screen and XP-style boot sequence
+- Draggable Luna windows, desktop icons, Start menu and working taskbar
+- Real project screenshots and an itch.io game library
+- XP Assistant powered by Chrome's on-device Gemini Nano
+- Playable Minesweeper, Snake, Tetris, Chess vs Ey-Ay, and Target Practice
+- Notepad, Paint, Calculator, music player and printable résumé
+
+## Tech
+
+- Next.js 15 + React 19
+- Hand-written CSS (no UI kit)
+- Local images, sounds and fonts
+- Vercel Analytics
+- Chrome built-in AI with a local fallback assistant
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Links
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- GitHub: [Rafiadnan0666](https://github.com/Rafiadnan0666)
+- itch.io: [gregrsea-975](https://gregrsea-975.itch.io)
+- LinkedIn: [Rafi Adnan](https://www.linkedin.com/in/rafi-adnan-a52141274/)
+- Email: fn234561@gmail.com

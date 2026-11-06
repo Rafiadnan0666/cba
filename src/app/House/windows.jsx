@@ -1,14 +1,21 @@
 "use client";
 
-import { AVATAR, PROJECTS } from "./data";
+import { AVATAR, GITHUB_STATS, PROJECTS } from "./data";
 
 const SKILLS_WEB = [
   ["React / Next.js", 90],
   ["TypeScript / JavaScript", 88],
-  ["Laravel / CodeIgniter / PHP", 85],
-  ["SvelteKit", 78],
+  ["Laravel / CodeIgniter / PHP", 86],
+  ["SvelteKit", 80],
   ["Supabase / MySQL / MongoDB", 82],
   ["Tailwind CSS", 92],
+];
+
+const SKILLS_MOBILE = [
+  ["Flutter / Dart", 82],
+  ["Python", 78],
+  ["TensorFlow Lite / TensorFlow.js", 76],
+  ["On-device AI / Computer Vision", 74],
 ];
 
 const SKILLS_GAME = [
@@ -35,10 +42,11 @@ export function ProfileContent({ tab, setTab }) {
           </div>
           <div>
             <h2 className="profile-name">Rafi Adnan</h2>
-            <div className="profile-title-p">Full-stack Web Developer · Indie Game Developer</div>
+            <div className="profile-title-p">Full-stack Web &amp; Mobile Developer · Indie Game Developer</div>
             <div className="profile-badges">
               <span className="profile-badge">BNSP Certified</span>
-              <span className="profile-badge">3rd Place · Portfolio Competition 2025</span>
+              <span className="profile-badge">3rd Place · Portfolio 2025</span>
+              <span className="profile-badge">Open to Work</span>
               <span className="profile-badge">Indonesia</span>
             </div>
           </div>
@@ -64,11 +72,25 @@ export function ProfileContent({ tab, setTab }) {
             <fieldset className="xp-fieldset">
               <legend>About Me</legend>
               <p className="about-para">
-                I build things people actually enjoy using: production web platforms by day, Unity chaos by
-                night. From real-time collaboration tools to on-device AI accessibility apps, I ship complete
-                products: clean architecture, thoughtful UX, zero excuses. Currently obsessed with browser-native
-                AI and making the web feel like 2003 again.
+                I build things people actually enjoy using: production web platforms, mobile apps and Unity
+                chaos. From real-time collaboration tools to on-device AI accessibility apps and an alarm clock
+                that fights back, I ship complete products: clean architecture, thoughtful UX, zero excuses.
+                Currently obsessed with on-device ML and making the web feel like 2003 again.
               </p>
+            </fieldset>
+            <fieldset className="xp-fieldset">
+              <legend>GitHub This Year</legend>
+              <div className="github-stat-grid">
+                <div className="github-stat"><b>{GITHUB_STATS.repos}</b><span>repositories</span></div>
+                <div className="github-stat"><b>{GITHUB_STATS.contributions}</b><span>contributions</span></div>
+                <div className="github-stat"><b>{GITHUB_STATS.stars}</b><span>stars</span></div>
+                <div className="github-stat"><b>{GITHUB_STATS.followers}</b><span>followers</span></div>
+              </div>
+              <div className="achievement-row">
+                {GITHUB_STATS.achievements.map((a) => (
+                  <span key={a} className="achievement-badge">{a}</span>
+                ))}
+              </div>
             </fieldset>
             <fieldset className="xp-fieldset">
               <legend>Career Highlights</legend>
@@ -77,15 +99,17 @@ export function ProfileContent({ tab, setTab }) {
                 <li><b>3rd Place</b>: Portfolio Competition 2025</li>
                 <li><b>Web Developer Intern</b>: YBM PLN (Feb to Jul 2024)</li>
                 <li><b>9 games published</b> on itch.io as Gregrsea 975</li>
-                <li><b>40+ repositories</b> across web, mobile and game dev</li>
+                <li><b>{GITHUB_STATS.repos} repositories</b> across web, mobile and game dev ({GITHUB_STATS.publicRepos} public)</li>
               </ul>
             </fieldset>
             <fieldset className="xp-fieldset">
               <legend>Featured Work</legend>
               <ul className="xp-list">
-                <li><b>ClrBlind</b>: on-device AI accessibility (try the live demo!)</li>
+                <li><b>Awake</b>: alarm clock that requires math or an object scan</li>
+                <li><b>SIBI Translator</b>: webcam sign language to Indonesian speech</li>
+                <li><b>ABS</b>: self-hosted Laravel HR &amp; attendance system</li>
+                <li><b>ClrBlind</b>: on-device AI colour-vision accessibility</li>
                 <li><b>Tabwise</b>: collaborative research platform with AI insights</li>
-                <li><b>Disaster Tracker</b>: live seismic monitoring dashboard</li>
               </ul>
             </fieldset>
           </>
@@ -95,6 +119,7 @@ export function ProfileContent({ tab, setTab }) {
           <>
             {[
               ["Web Development", SKILLS_WEB],
+              ["Mobile & On-device AI", SKILLS_MOBILE],
               ["Game Development", SKILLS_GAME],
               ["Tools & Others", SKILLS_TOOLS],
             ].map(([title, rows]) => (
@@ -120,6 +145,10 @@ export function ProfileContent({ tab, setTab }) {
               <div className="contact-item">
                 <svg width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e8ebef" stroke="#5a6572" /><path d="M3 6 l9 7 l9 -7" stroke="#2f6fd0" strokeWidth="1.8" fill="none" /></svg>
                 <a href="mailto:fn234561@gmail.com" className="contact-link">fn234561@gmail.com</a>
+              </div>
+              <div className="contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" fill="#fff" stroke="#5a6572" /><path d="M8 7 h8 M8 11 h8 M8 15 h5" stroke="#2f6fd0" strokeWidth="1.6" strokeLinecap="round" /></svg>
+                <a href="/resume" className="contact-link">View / download résumé</a>
               </div>
               <div className="contact-item">
                 <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2f8fe0" stroke="#1b5fa8" /><path d="M2.5 12 h19 M12 2 a15 15 0 0 1 0 20 M12 2 a15 15 0 0 0 0 20" stroke="#dff0ff" fill="none" /></svg>
@@ -206,12 +235,17 @@ export function ProjectsContent() {
               <svg width="15" height="15" viewBox="0 0 48 48"><rect x="6" y="12" width="36" height="24" rx="6" fill="#4a5568" stroke="#2b3446" /></svg>
               Play my games
             </button>
+            <button className="side-link" onClick={() => openExternal("/resume")}>
+              <svg width="15" height="15" viewBox="0 0 48 48"><rect x="10" y="4" width="28" height="40" rx="3" fill="#fff" stroke="#6b7280" /><path d="M16 14 h16 M16 22 h16 M16 30 h10" stroke="#2f6fd0" strokeWidth="2.4" strokeLinecap="round" /></svg>
+              Open résumé
+            </button>
           </div>
         </div>
         <div className="side-panel">
           <div className="side-panel-head">Other Places</div>
           <div className="side-panel-body">
-            <button className="side-link" onClick={() => openExternal("https://www.linkedin.com/in/rafi-adnan")}>LinkedIn profile</button>
+            <button className="side-link" onClick={() => openExternal("https://www.linkedin.com/in/rafi-adnan-a52141274/")}>LinkedIn profile</button>
+            <button className="side-link" onClick={() => openExternal("https://www.instagram.com/gregrsea_ninesevenfive/")}>Instagram</button>
             <button className="side-link" onClick={() => openExternal("https://ko-fi.com/Q5Q81DS5SA")}>Ko-fi page</button>
           </div>
         </div>
@@ -219,13 +253,14 @@ export function ProjectsContent() {
           <div className="side-panel-head">Details</div>
           <div className="side-panel-body">
             <p className="side-detail">
-              <b>{PROJECTS.length} projects</b><br />
+              <b>{PROJECTS.length} featured projects</b><br />
+              {GITHUB_STATS.repos} repositories · {GITHUB_STATS.contributions} contributions<br />
               Rafi Adnan<br />
-              Web &amp; Game Developer<br />
+              Web, Mobile &amp; Game Developer<br />
               Indonesia<br />
               <br />
               Stack: React, Laravel,<br />
-              SvelteKit, Unity<br />
+              Flutter, SvelteKit, Unity<br />
               Status: <b style={{ color: "#1d9e34" }}>Open to work</b>
             </p>
           </div>
@@ -252,7 +287,7 @@ export function ProjectsContent() {
               <div key={p.title} className="project-card">
                 <div className="project-image-container">
                   <img src={p.img} alt={p.title} loading="lazy" />
-                  {p.live && <span className="project-live-dot">LIVE DEMO</span>}
+                  {p.live && <span className="project-live-dot">{p.liveLabel || "LIVE DEMO"}</span>}
                 </div>
                 <div className="project-info">
                   <h3>{p.title}</h3>
@@ -264,9 +299,15 @@ export function ProjectsContent() {
                   </div>
                   <div className="project-links-row">
                     {p.live && (
-                      <a className="project-link" href={p.live} target="_blank" rel="noopener noreferrer">Live Site</a>
+                      <a className="project-link" href={p.live} target="_blank" rel="noopener noreferrer">
+                        {p.liveLabel ? p.liveLabel : "Live Site"}
+                      </a>
                     )}
-                    <a className="project-link" href={p.repo} target="_blank" rel="noopener noreferrer">Source Code</a>
+                    {p.repo ? (
+                      <a className="project-link" href={p.repo} target="_blank" rel="noopener noreferrer">Source Code</a>
+                    ) : (
+                      <span className="project-private">Private client project</span>
+                    )}
                   </div>
                 </div>
               </div>

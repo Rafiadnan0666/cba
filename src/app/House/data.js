@@ -1,6 +1,15 @@
 ﻿export const AVATAR =
   "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/5807b862bf1790ac6b1f82ab75d1be73-1743593947676/af264c2c-8fbc-4003-a5b3-d0b46292c8f8.png";
 
+export const GITHUB_STATS = {
+  repos: 66,
+  publicRepos: 38,
+  stars: 39,
+  followers: 6,
+  contributions: 334,
+  achievements: ["Pull Shark", "YOLO", "Quickdraw"],
+};
+
 export const WINDOW_META = {
   profile: { label: "Rafi Adnan - Profile", icon: "profile", w: 620, h: 545 },
   projects: { label: "My Projects", icon: "folder", w: 800, h: 575 },
@@ -34,278 +43,183 @@ export const INITIAL_WINDOWS = Object.fromEntries(
 
 export const PROJECTS = [
   {
+    title: "SIBI Translator",
+    desc: "Webcam-based Indonesian sign language translator. Recognises SIBI alphabet gestures, assembles words, predicts Indonesian sentences, then speaks them with text-to-speech.",
+    img: "/shots/sibi.png",
+    live: "https://sibii.vercel.app",
+    repo: "https://github.com/Rafiadnan0666/sibi",
+    tags: ["Python", "TensorFlow", "Text-to-Speech"],
+  },
+  {
+    title: "Awake Alarm",
+    desc: "A non-dismissable Android alarm clock that stops only when you solve math or scan a real object. Detection runs fully on-device with TensorFlow Lite. Beta APK available.",
+    img: "/shots/awake-home.png",
+    live: "https://github.com/Rafiadnan0666/bangun/releases/download/v1.0.2-beta/app-release.apk",
+    liveLabel: "Download APK",
+    repo: "https://github.com/Rafiadnan0666/bangun",
+    tags: ["Flutter", "Dart", "TensorFlow Lite"],
+  },
+  {
+    title: "ABS Attendance",
+    desc: "Self-hosted Laravel 13 HR and attendance starter with GPS check-in, leave management, reimbursement approvals and role-based access control. MIT licensed.",
+    img: "/shots/absen.png",
+    live: null,
+    repo: "https://github.com/Rafiadnan0666/absen-laravel",
+    tags: ["Laravel 13", "MySQL", "RBAC"],
+  },
+  {
     title: "ClrBlind",
-    desc: "Privacy-first accessibility app for color-blind users. Real-time object detection, rupiah recognition, OCR and scene narration, all running fully on-device in the browser.",
-    img: "https://img.itch.zone/aW1nLzE4Nzk0Njg5LnBuZw==/original/FsHEyg.png",
+    desc: "Privacy-first accessibility app for colour-blind users. Object, colour, currency, medicine and meat-freshness detection plus OCR, all running on-device in the browser.",
+    img: "/shots/clrblind.png",
     live: "https://collind.vercel.app",
     repo: "https://github.com/Rafiadnan0666/color-blind",
-    tags: ["SvelteKit", "ONNX Runtime", "TensorFlow.js"],
+    tags: ["SvelteKit", "TensorFlow.js", "ONNX"],
   },
   {
-    title: "Tabwise (gugel)",
-    desc: "Collaborative research platform with shared sessions, AI-powered insights, real-time co-editing and team management. Draft quality assessment and link analysis components.",
-    img: "https://placehold.co/600x400/dce7fb/12439e?text=Tabwise",
+    title: "Tabwise",
+    desc: "Collaborative research platform with shared research tabs, AI summaries, real-time co-editing, drafts and team management. Also packaged as a Chrome extension.",
+    img: "/shots/tabwise-editor.png",
     live: "https://gugel-ebon.vercel.app",
     repo: "https://github.com/Rafiadnan0666/gugel",
-    tags: ["Next.js", "TypeScript", "Supabase"],
+    tags: ["Next.js", "Supabase", "AI"],
   },
   {
-    title: "CBA Portfolio",
-    desc: "Windows XP themed portfolio website with ΩMEGA chess tier (depth 12 unbeatable), contact links for Fastwork, Fiverr, Instagram, LinkedIn.",
-    img: "https://placehold.co/600x400/1a1a2e/00d4ff?text=CBA+Portfolio",
-    live: "https://www.rafiadnan.my.id",
-    repo: "https://github.com/Rafiadnan0666/cba",
-    tags: ["Next.js", "React", "Tailwind", "Chess.js"],
+    title: "Outdoor Gear POS",
+    desc: "Full CodeIgniter 4 point-of-sale and e-commerce system for an outdoor gear store: multi-attribute variants, Midtrans payments, Biteship shipping and a walk-in POS dashboard.",
+    img: "/shots/posci4-store.png",
+    live: null,
+    repo: "https://github.com/Rafiadnan0666/pos-ci4",
+    tags: ["CodeIgniter 4", "Midtrans", "Biteship"],
   },
   {
-    title: "Land Baru",
-    desc: "Landing page with security hardening, contrast fixes, GSAP animations, and cross-device layout fixes.",
-    img: "https://placehold.co/600x400/0f3460/e94560?text=Land+Baru",
-    live: "https://landbaru.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/landbaru",
-    tags: ["Next.js", "GSAP", "Tailwind"],
+    title: "Wavan Coffee",
+    desc: "Corporate and product website for Wavan Coffee Roastery (WR.39 GRUP JemeKite), a coffee roastery based in Way Kanan, Lampung, Indonesia.",
+    img: "/shots/wavan.png",
+    live: "https://wavancoffee.vercel.app",
+    repo: null,
+    tags: ["Svelte", "Corporate Site", "SEO"],
   },
   {
-    title: "School Web Example",
-    desc: "School website example with SvelteKit, Vercel adapter, and Font Awesome icons. Fixed Vercel 500 errors.",
-    img: "https://placehold.co/600x400/1b263b/00b4d8?text=School+Web",
+    title: "SMA Cahaya Nusantara",
+    desc: "School website for SMA Cahaya Nusantara with PPDB 2026 admissions, academic programmes, extracurriculars, news and contact flows.",
+    img: "/shots/schoolweb.png",
     live: "https://schoolwebexample.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/school-web",
-    tags: ["SvelteKit", "Vercel Adapter", "Font Awesome"],
-  },
-  {
-    title: "Disaster Tracker",
-    desc: "Live earthquake and weather monitoring dashboard with a server-side risk analysis engine, alerting and trend charts.",
-    img: "https://img.itch.zone/aW1nLzI0ODcyNjI1LnBuZw==/original/BZlGcM.png",
-    live: "https://disaster-tracker.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/disaster-svelte",
-    tags: ["SvelteKit", "MongoDB", "Leaflet"],
-  },
-  {
-    title: "Ideas",
-    desc: "Real-time team collaboration platform inspired by Notion and Linear: team chat, threaded posts, roles and invite links.",
-    img: "https://placehold.co/600x400/e9e2f7/5b3a9e?text=Ideas",
-    live: "https://ideas-wheat.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/vault2",
-    tags: ["Next.js", "Supabase Realtime"],
+    repo: null,
+    tags: ["SvelteKit", "School Site", "PPDB"],
   },
   {
     title: "FACTORY 404",
-    desc: "Quantum manufacturing terminal. Command a futuristic production core through a retro-cyberpunk interface. Google site verification added.",
-    img: "https://placehold.co/600x400/101418/39ff8b?text=FACTORY+404",
+    desc: "Quantum manufacturing terminal: command a futuristic production core through a retro-cyberpunk interface. A browser toy with a serious factory-sim soul.",
+    img: "/shots/factory404.png",
     live: "https://factoryy.vercel.app",
     repo: "https://github.com/Rafiadnan0666/factory-1",
-    tags: ["Next.js 15", "TypeScript", "Tailwind"],
+    tags: ["Next.js 15", "TypeScript", "Retro UI"],
+  },
+  {
+    title: "CBA Portfolio",
+    desc: "The site you are using: a hand-built Windows XP desktop portfolio with working games, a local AI assistant and a chess engine that does not show mercy.",
+    img: "/shots/cba.jpg",
+    live: "https://www.rafiadnan.my.id",
+    repo: "https://github.com/Rafiadnan0666/cba",
+    tags: ["Next.js 15", "React", "Windows XP"],
   },
   {
     title: "Business Finder",
-    desc: "Responsive business directory web app built for easy listing, search and filtering. Next.js 13.4.0 upgrade.",
-    img: "https://placehold.co/600x400/e3ecf7/12439e?text=Business+Finder",
+    desc: "OSINT and business intelligence web app. Search businesses by area, category and radius, with auto-enrichment, map scanning and a clean dashboard.",
+    img: "/shots/businessfinder.png",
     live: "https://busfind.vercel.app",
     repo: "https://github.com/Rafiadnan0666/business-finder",
-    tags: ["Next.js", "JavaScript"],
-  },
-  {
-    title: "POS App",
-    desc: "Point of Sale application with updated profile page styles and layout components.",
-    img: "https://placehold.co/600x400/2d6a4f/95d5b2?text=POS+App",
-    live: "https://pos-app-peach.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/pos-pake-jees",
-    tags: ["Next.js", "React", "Tailwind"],
-  },
-  {
-    title: "Jasuke Nyoss",
-    desc: "Simple landing page project.",
-    img: "https://placehold.co/600x400/f77f00/fcbf49?text=Jasuke+Nyoss",
-    live: "https://jasukenyoss.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/jasukenyoss",
-    tags: ["Next.js", "JavaScript"],
+    tags: ["Next.js 15", "OSINT", "OpenStreetMap"],
   },
   {
     title: "Bear Scratching Game",
-    desc: "Interactive bear scratching game.",
-    img: "https://placehold.co/600x400/8b5e3c/d4a574?text=Bear+Game",
+    desc: "Scratch the back of a bear. But watch it, he can get mad. A tiny interactive browser game with hand-drawn chaos.",
+    img: "/shots/beargame.png",
     live: "https://bear-scratching-game.vercel.app",
     repo: "https://github.com/Rafiadnan0666/bear-scratching-game",
-    tags: ["JavaScript", "Canvas", "Game"],
+    tags: ["TypeScript", "Canvas", "Game"],
   },
   {
-    title: "Ahlul Qohwah Landing",
-    desc: "Landing page for Ahlul Qohwah.",
-    img: "https://placehold.co/600x400/1a1a2e/00d4ff?text=Ahlul+Qohwah",
-    live: "https://ahlulqohwah.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/ahlul-qohwah-landing",
-    tags: ["Next.js", "Tailwind"],
-  },
-  {
-    title: "Landing Start",
-    desc: "Initial landing page template.",
-    img: "https://placehold.co/600x400/2c3e50/ecf0f1?text=Landing+Start",
-    live: "https://landingstart.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/landingstart",
-    tags: ["Next.js", "JavaScript"],
-  },
-  {
-    title: "FACTORY (Clicker Game)",
-    desc: "Factory clicker game with Next.js security updates.",
-    img: "https://placehold.co/600x400/101418/39ff8b?text=FACTORY+Game",
+    title: "FACTORY Clicker",
+    desc: "Minimalist factory clicker game about designing and optimising production lines. Build the machine, then watch the numbers go up.",
+    img: "/shots/factoryclicker.png",
     live: "https://factory-silk.vercel.app",
     repo: "https://github.com/Rafiadnan0666/factory-clicker-game",
-    tags: ["Next.js", "Game", "TypeScript"],
-  },
-  {
-    title: "Ollama Copilot",
-    desc: "AI coding assistant powered by Ollama.",
-    img: "https://placehold.co/600x400/6c5ce7/a29bfe?text=Ollama+Copilot",
-    live: "https://ollama-copilot.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/ollama-copilot",
-    tags: ["Next.js", "Ollama", "AI"],
-  },
-  {
-    title: "QR Next",
-    desc: "QR code generator built with Next.js.",
-    img: "https://placehold.co/600x400/00b894/ffffff?text=QR+Next",
-    live: "https://qrnext-one.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/qrnext",
-    tags: ["Next.js", "QR Code"],
-  },
-  {
-    title: "URL to QR",
-    desc: "URL to QR code converter.",
-    img: "https://placehold.co/600x400/0984e3/ffffff?text=URL+to+QR",
-    live: "https://qrnext-psi.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/qrnext",
-    tags: ["Next.js", "QR Code"],
-  },
-  {
-    title: "Next.js Commerce",
-    desc: "E-commerce starter with Next.js.",
-    img: "https://placehold.co/600x400/1e3799/ffffff?text=Next.js+Commerce",
-    live: "https://nextjs-commerce-pink-ten-97.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/nextjs-commerce",
-    tags: ["Next.js", "Commerce", "Tailwind"],
-  },
-  {
-    title: "PyEcommerce",
-    desc: "Python-based e-commerce project.",
-    img: "https://placehold.co/600x400/306998/ffd43b?text=PyEcommerce",
-    live: "https://pyecommerce.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/pyecommerce",
-    tags: ["Python", "FastAPI", "Next.js"],
-  },
-  {
-    title: "Rafi Azure",
-    desc: "Personal project deployed on Azure.",
-    img: "https://placehold.co/600x400/0078d4/ffffff?text=Rafi+Azure",
-    live: "https://rafi-azure.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/rafi",
-    tags: ["Next.js", "Azure"],
-  },
-  {
-    title: "Feane 1.0.0",
-    desc: "Feane project v1.0.0.",
-    img: "https://placehold.co/600x400/6c5ce7/ffffff?text=Feane",
-    live: "https://feane-1-0-0.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/feane-1.0.0",
-    tags: ["Next.js", "React"],
-  },
-  {
-    title: "Furni 1.0.0",
-    desc: "Furniture e-commerce template v1.0.0.",
-    img: "https://placehold.co/600x400/2d3436/ffeaa7?text=Furni",
-    live: "https://furni-1-0-0-sepia.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/furni-1.0.0",
-    tags: ["Next.js", "E-commerce", "Tailwind"],
-  },
-  {
-    title: "Koppee 1.0.0",
-    desc: "Coffee shop template v1.0.0.",
-    img: "https://placehold.co/600x400/6f4e37/d7b49e?text=Koppee",
-    live: "https://koppee-1-0-0.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/Koppee-1.0.0",
-    tags: ["Next.js", "Tailwind"],
-  },
-  {
-    title: "Okelah",
-    desc: "Okelah project.",
-    img: "https://placehold.co/600x400/e17055/fdcb6e?text=Okelah",
-    live: "https://okelah-vert.vercel.app",
-    repo: "https://github.com/Rafiadnan0666/okelah",
-    tags: ["Next.js", "JavaScript"],
+    tags: ["Next.js", "TypeScript", "Game"],
   },
 ];
 
 export const ITCH_GAMES = [
   {
-    title: "Distortion Protocol",
-    desc: "A turn-based tactical RPG.",
-    img: "https://img.itch.zone/aW1nLzI1NzYwOTM5LnBuZw==/315x250%23c/yHALPU.png",
-    link: "https://gregrsea-975.itch.io/distortion-protocol",
-    genre: "Role Playing",
-    playable: false,
-  },
-  {
     title: "Ghost",
     desc: "You are a ghost.",
-    img: "https://placehold.co/600x400/1b1e2b/cfd8ff?text=Ghost",
+    img: "/covers/ghost.png",
     link: "https://gregrsea-975.itch.io/ghost",
     genre: "Action",
     playable: true,
   },
   {
-    title: "Time Loop",
-    desc: "Mind-bending FPS puzzle where the only help you have... is yourself. Literally.",
-    img: "https://img.itch.zone/aW1nLzIyNDc4OTYyLnBuZw==/315x250%23c/LkK6v4.png",
-    link: "https://gregrsea-975.itch.io/loop",
-    genre: "Platformer",
-    playable: true,
-  },
-  {
-    title: "Artifact Fetching for Dummies",
-    desc: "Steal the Artifact. Dodge the Drones. Question Your Life Choices.",
-    img: "https://img.itch.zone/aW1nLzE4Nzk0Njg5LnBuZw==/original/FsHEyg.png",
-    link: "https://gregrsea-975.itch.io/artifact-fetching-for-dummies",
-    genre: "Action",
-    playable: true,
-  },
-  {
-    title: "END",
-    desc: "A sinister coliseum where warriors fight for false freedom.",
-    img: "https://img.itch.zone/aW1nLzE5NjM4NTM0LmpwZw==/315x250%23c/YRDn7Q.jpg",
-    link: "https://gregrsea-975.itch.io/end",
-    genre: "Adventure",
-    playable: true,
+    title: "Distortion Protocol",
+    desc: "A turn-based tactical RPG.",
+    img: "/covers/distortion-protocol.png",
+    link: "https://gregrsea-975.itch.io/distortion-protocol",
+    genre: "Role Playing",
+    playable: false,
   },
   {
     title: "bear",
     desc: "Scratch the back of a bear but watch it, he can get mad.",
-    img: "https://img.itch.zone/aW1nLzI2Nzk3MzEwLnBuZw==/original/uzuPEy.png",
+    img: "/covers/bear.png",
     link: "https://gregrsea-975.itch.io/bear",
     genre: "Action",
     playable: true,
   },
   {
     title: "Kaiju Commander",
-    desc: "You don't control the kaiju. You suggest.",
-    img: "https://img.itch.zone/aW1nLzE4Nzk0Njg5LnBuZw==/315x250%23c/FsHEyg.png",
+    desc: "You do not control the kaiju. You suggest.",
+    img: "/covers/kaiju-commander.png",
     link: "https://gregrsea-975.itch.io/kaiju-commander",
     genre: "Role Playing",
     playable: false,
   },
   {
     title: "FACTORY",
-    desc: "Minimalist factory simulation prototype. Design and optimize production flows.",
-    img: "https://img.itch.zone/aW1nLzI0ODcyNjI1LnBuZw==/original/BZlGcM.png",
+    desc: "Minimalist factory simulation prototype. Design and optimise production flows.",
+    img: "/covers/factory.png",
     link: "https://gregrsea-975.itch.io/factory-yyh",
     genre: "Simulation",
     playable: true,
   },
   {
+    title: "Time Loop",
+    desc: "Mind-bending FPS puzzle where the only help you have... is yourself. Literally.",
+    img: "/covers/time-loop.png",
+    link: "https://gregrsea-975.itch.io/loop",
+    genre: "Platformer",
+    playable: false,
+  },
+  {
+    title: "END",
+    desc: "A sinister coliseum where warriors fight for false freedom.",
+    img: "/covers/end.jpg",
+    link: "https://gregrsea-975.itch.io/end",
+    genre: "Adventure",
+    playable: false,
+  },
+  {
     title: "Mabar Rek",
-    desc: "Multiplayer FPS shooter up to 20 people.",
-    img: "https://placehold.co/600x400/22262e/8be9fd?text=Mabar+Rek",
+    desc: "Multiplayer FPS shooter for up to 20 players. Download for Windows.",
+    img: "/covers/mabar-rek.svg",
     link: "https://gregrsea-975.itch.io/mabar-rek",
     genre: "Shooter",
+    playable: false,
+  },
+  {
+    title: "Artifact Fetching for Dummies",
+    desc: "Steal the Artifact. Dodge the Drones. Question Your Life Choices.",
+    img: "/covers/artifact-fetching.png",
+    link: "https://gregrsea-975.itch.io/artifact-fetching-for-dummies",
+    genre: "Action",
     playable: false,
   },
 ];
@@ -313,45 +227,59 @@ export const ITCH_GAMES = [
 export const SYSTEM_PROMPT = `You are the XP Assistant living inside Rafi Adnan's Windows XP themed portfolio website. You speak English: short, warm, slightly playful, retro-flavored. You help recruiters and visitors learn about Rafi and encourage them to hire him.
 
 FACTS ABOUT RAFI ADNAN:
-- Full-stack web developer and indie game developer based in Indonesia.
+- Full-stack web, mobile and indie game developer based in Indonesia. Currently open to work.
 - BNSP certified Web Developer; 3rd place winner of a Portfolio Competition 2025; interned as Web Developer at YBM PLN (Feb-Jul 2024).
-- Web stack: React, Next.js, TypeScript, JavaScript, Laravel/PHP, CodeIgniter, Tailwind CSS, SvelteKit, Supabase, MySQL, MongoDB, Node.js.
+- GitHub: 66 repositories (38 public), 39 stars, 6 followers and 334 contributions in the last year. Achievements: Pull Shark, YOLO, Quickdraw.
+- Web stack: React, Next.js, TypeScript, JavaScript, SvelteKit, Laravel 13, CodeIgniter 4, Tailwind CSS, Supabase, MySQL, MongoDB, Node.js.
+- Mobile/AI stack: Flutter, Dart, Python, TensorFlow Lite, TensorFlow.js, ONNX Runtime Web, on-device ML.
 - Game stack: Unity, C#, Shader Graph, NavMesh AI, procedural generation.
 - Flagship projects:
-  * ClrBlind: privacy-first accessibility app for color-blind users; real-time object detection, Indonesian rupiah recognition, OCR and scene narration running fully on-device (SvelteKit, ONNX Runtime Web, TensorFlow.js). Live: https://collind.vercel.app
-  * Tabwise (gugel): collaborative research platform with AI insights and real-time co-editing (Next.js, TypeScript, Supabase). Live: https://gugel-ebon.vercel.app
-  * Disaster Tracker: live earthquake/weather monitoring dashboard with risk analysis engine (SvelteKit, MongoDB, Leaflet, Chart.js). Live: https://disaster-tracker.vercel.app
-  * Ideas: real-time team collaboration platform like Notion/Linear (Next.js, Supabase Realtime). Live: https://ideas-wheat.vercel.app
-  * FACTORY 404: quantum manufacturing terminal web toy (Next.js 15). Live: https://factoryy.vercel.app
-  * Business Finder: responsive business directory web app (Next.js). Live: https://busfind.vercel.app
-  * CBA Portfolio: Windows XP themed portfolio with ΩMEGA chess (depth 12). Live: https://rafiadnan.my.id
-- Indie games published as "Gregrsea 975" on itch.io: Distortion Protocol (tactical RPG), Ghost, Time Loop, Artifact Fetching for Dummies, END, bear, Kaiju Commander, FACTORY, Mabar Rek. Profile: https://gregrsea-975.itch.io
-- 30+ projects on Vercel including: Land Baru, School Web, POS App, Bear Scratching Game, FACTORY Clicker Game, Ollama Copilot, QR Next, Next.js Commerce, Feane, Furni, Koppee, and more.
-- GitHub: https://github.com/Rafiadnan0666 | Website: https://rafiadnan.my.id
+  * Awake: non-dismissable Android alarm clock that stops only when you solve math or scan a real object; all detection on-device with TensorFlow Lite. Beta APK v1.0.2.
+  * SIBI Translator: webcam Indonesian sign language translator; recognises SIBI alphabet, builds words, predicts sentences and speaks them. Live: https://sibii.vercel.app
+  * ABS: self-hosted Laravel 13 HR and attendance system with GPS check-in, leave, reimbursements and RBAC. MIT licensed.
+  * ClrBlind: privacy-first colour-vision accessibility app with on-device object, colour, currency, medicine and freshness detection. Live: https://collind.vercel.app
+  * Tabwise: collaborative research platform with AI summaries and real-time co-editing. Live: https://gugel-ebon.vercel.app
+  * Outdoor Gear POS: CodeIgniter 4 POS and e-commerce system with Midtrans and Biteship.
+  * Wavan Coffee: corporate/product site for a Lampung coffee roastery. Live: https://wavancoffee.vercel.app
+  * CBA Portfolio: this Windows XP themed portfolio with working games and an on-device AI assistant. Live: https://rafiadnan.my.id
+- 9 indie games published as "Gregrsea 975" on itch.io: Ghost, Distortion Protocol, bear, Kaiju Commander, FACTORY, Time Loop, END, Mabar Rek, Artifact Fetching for Dummies. Profile: https://gregrsea-975.itch.io
+- GitHub: https://github.com/Rafiadnan0666 | Website: https://rafiadnan.my.id | Instagram: @gregrsea_ninesevenfive
 - He also produces electronic/dubstep music ("Joy Theme" on Spotify).
 
 RULES:
 - Keep answers under 90 words. Plain text only.
 - If asked who built the site: Rafi did, entirely by himself.
-- If someone seems like a recruiter, highlight ClrBlind, Tabwise, and his full-stack + game range, then point them to the Contact tab in the Profile window or rafiadnan.my.id.
+- If someone seems like a recruiter, highlight Awake, SIBI, ABS, ClrBlind and his web + mobile + game range, then point them to the Contact tab in the Profile window or rafiadnan.my.id.
 - Never invent facts outside this knowledge.`;
 
 export const FALLBACK_ANSWERS = [
   {
     k: ["hire", "hired", "recruit", "job", "available", "open to work"],
-    a: "Rafi is open to opportunities! He ships production web apps (React, Next.js, Laravel, SvelteKit) AND indie games in Unity. Start with the ClrBlind project in My Projects, then hit the Contact tab in his Profile.",
+    a: "Rafi is open to opportunities! He ships production web apps (React, Next.js, Laravel, SvelteKit), mobile apps in Flutter, and indie games in Unity. Start with Awake or SIBI in My Projects, then hit Contact in his Profile.",
+  },
+  {
+    k: ["awake", "bangun", "alarm"],
+    a: "Awake is a non-dismissable Android alarm clock. It only stops when you solve math problems or scan a real object. TensorFlow Lite handles all detection on-device. Beta APK v1.0.2 is available from My Projects.",
+  },
+  {
+    k: ["sibi", "sign", "isyarat", "webcam"],
+    a: "SIBI Translator watches your webcam, recognises Indonesian sign-language alphabet gestures, builds words, predicts sentences and speaks them with text-to-speech. Try it live at sibii.vercel.app.",
+  },
+  {
+    k: ["absen", "attendance", "hr", "laravel"],
+    a: "ABS is a self-hosted Laravel 13 HR and attendance starter with GPS check-in, leave management, reimbursement approvals and role-based access control. It is MIT licensed on GitHub.",
   },
   {
     k: ["clrblind", "color blind", "accessib", "a11y"],
-    a: "ClrBlind is his flagship: an AI accessibility app for color-blind users. Object detection, rupiah recognition and OCR run 100% on-device. Zero uploads. Try it live: https://collind.vercel.app",
+    a: "ClrBlind is his privacy-first accessibility app for colour-blind users. Object detection, currency recognition, OCR and scene narration run 100% on-device. Try it live: https://collind.vercel.app",
   },
   {
     k: ["game", "itch", "unity", "play"],
-    a: "As Gregrsea 975 he shipped 9 games on itch.io: tactical RPGs, horror parkour FPS, multiplayer shooters. Open the Itch.io Library on the desktop to play several right in your browser!",
+    a: "As Gregrsea 975 he shipped 9 games on itch.io: tactical RPGs, horror parkour FPS, multiplayer shooters and more. Open the Itch.io Library on the desktop to play several right in your browser!",
   },
   {
     k: ["skill", "stack", "tech", "framework", "language"],
-    a: "Frontend: React, Next.js, TypeScript, Tailwind, SvelteKit. Backend: Laravel, CodeIgniter, Node.js, Supabase, MySQL, MongoDB. Games: Unity, C#, Shader Graph. Certified BNSP Web Developer.",
+    a: "Web: React, Next.js, TypeScript, SvelteKit, Laravel, CodeIgniter, Tailwind, Supabase. Mobile/AI: Flutter, Dart, Python, TensorFlow Lite. Games: Unity, C#. Certified BNSP Web Developer.",
   },
   {
     k: ["contact", "email", "reach", "cv", "resume"],
@@ -364,7 +292,7 @@ export const FALLBACK_ANSWERS = [
 ];
 
 export const GENERIC_FALLBACK =
-  "Great question! Short version: Rafi builds polished web apps (React/Next.js/Laravel/SvelteKit) and indie games (Unity). Highlights: ClrBlind, Tabwise and 9 games on itch.io. Ask me about his skills, projects, games or how to hire him!";
+  "Great question! Short version: Rafi builds polished web apps (React/Next.js/Laravel/SvelteKit), mobile apps (Flutter) and indie games (Unity). Highlights: Awake, SIBI, ABS, ClrBlind, Tabwise and 9 games on itch.io.";
 
 export const AVAILABILITY_LABEL = {
   checking: "Checking on-device AI...",
