@@ -6,39 +6,39 @@ import { AVATAR } from "./data";
 export function PowerScreen({ onStart }) {
   return (
     <div className="power-screen" onClick={onStart}>
-      <div className="retro-rig">
-        <div className="retro-rig-top">
-          <span className="retro-brand">WINDOWS</span>
-          <span className="retro-model">PRODUCTIVITY EDITION</span>
-        </div>
-
-        <div className="retro-drive-row">
-          <div className="retro-drive">
-            <span className="retro-slot" />
-            <span className="retro-drive-label">5.25&quot; FLOPPY</span>
+      <div className="xp-case">
+        <div className="xp-case-top">
+          <div className="xp-logo-row">
+            <svg width="24" height="24" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M4 12 h18 v14 H4 Z M26 12 h18 v14 H26 Z M4 28 h18 v14 H4 Z M26 28 h18 v14 H26 Z" fill="#0c3290" />
+              <path d="M13 12 v12 h2 v-12 Z M35 12 v12 h2 v-12 Z" fill="#0c3290" opacity="0.2" />
+            </svg>
+            <span>Windows XP</span>
           </div>
-          <div className="retro-drive small">
-            <span className="retro-slot" />
-            <span className="retro-drive-label">3.5&quot;</span>
+          <div className="xp-model">Home Edition</div>
+        </div>
+
+        <div className="xp-case-side">
+          <div className="xp-drive-525">
+            <div className="xp-drive-face">
+              <span className="xp-drive-label">FLOPPY</span>
+              <span className="xp-drive-slot" />
+              <span className="xp-drive-id">5.25"</span>
+            </div>
+          </div>
+          <div className="xp-drive-35">
+            <div className="xp-drive-face">
+              <span className="xp-drive-label">CD-ROM</span>
+              <span className="xp-drive-slot" />
+              <span className="xp-drive-id">3.5"</span>
+            </div>
           </div>
         </div>
 
-        <div className="retro-badge-row">
-          <span className="retro-badge">PENTIUM III</span>
-          <span className="retro-badge">128 MB RAM</span>
-          <span className="retro-badge">56K MODEM</span>
-        </div>
-
-        <div className="retro-vent-row" aria-hidden="true">
-          {Array.from({ length: 14 }).map((_, i) => (
-            <span key={i} />
-          ))}
-        </div>
-
-        <div className="retro-controls">
+        <div className="xp-controls">
           <button
             type="button"
-            className="retro-power"
+            className="xp-power-btn"
             aria-label="Power on"
             autoFocus
             onClick={(e) => {
@@ -46,31 +46,40 @@ export function PowerScreen({ onStart }) {
               onStart();
             }}
           >
-            <div className="retro-power-btn-face">
-              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+            <div className="xp-power-face">
+              <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 3 a1.6 1.6 0 0 1 1.6 1.6 v7 a1.6 1.6 0 0 1 -3.2 0 v-7 A1.6 1.6 0 0 1 12 3 Z M6.3 6.9 a1.6 1.6 0 0 1 0 2.26 a7 7 0 1 0 11.4 0 a1.6 1.6 0 1 1 2.26 -2.26 a10.2 10.2 0 1 1 -15.92 0 a1.6 1.6 0 0 1 2.26 0 Z" />
               </svg>
             </div>
-            <span className="retro-power-label">POWER</span>
+            <span className="xp-power-text">Power</span>
           </button>
 
-          <div className="retro-led-group" aria-hidden="true">
-            <span className="retro-led green" />
-            <span className="retro-led amber" />
+          <div className="xp-leds">
+            <span className="xp-led xp-led-green" />
+            <span className="xp-led xp-led-amber" />
           </div>
 
-          <div className="retro-turbo" aria-hidden="true">
-            <span>TURBO</span>
-            <span className="retro-turbo-btn" />
+          <div className="xp-turbo">
+            <span className="xp-turbo-label">Turbo</span>
+            <span className="xp-turbo-btn" />
           </div>
         </div>
 
-        <div className="retro-foot">BIOS DATE 08/20/03</div>
+        <div className="xp-vents" aria-hidden="true">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <span key={i} />
+          ))}
+        </div>
+
+        <div className="xp-bottom">
+          <div className="xp-brand">Intel Inside</div>
+          <div className="xp-bios">BIOS 08/20/03</div>
+        </div>
       </div>
 
-      <div className="power-text">PRESS THE POWER BUTTON</div>
-      <div className="power-subtext">CRT warming up · click anywhere or hit Enter</div>
-      <div className="power-footer">© 2003 RAFI ADNAN · HAND-BUILT WITH NEXT.JS</div>
+      <div className="power-text">PRESS THE POWER BUTTON TO START</div>
+      <div className="power-subtext">Click to boot · Windows XP Professional</div>
+      <div className="power-footer">© 2003 Rafi Adnan · Hand-built with Next.js</div>
     </div>
   );
 }
