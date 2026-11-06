@@ -1,6 +1,6 @@
 "use client";
 
-import { AVATAR, GITHUB_STATS, PROJECTS } from "./data";
+import { AVATAR, GITHUB_STATS, PROJECTS, ITCH_GAMES } from "./data";
 
 const SKILLS_WEB = [
   ["React / Next.js", 90],
@@ -231,7 +231,7 @@ export function ProjectsContent() {
               <svg width="15" height="15" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="#2f8fe0" stroke="#1b5fa8" /></svg>
               Open my website
             </button>
-            <button className="side-link" onClick={() => openExternal("https://gregrsea-975.itch.io")}>
+            <button className="side-link" onClick={() => openExternal("/itch")}>
               <svg width="15" height="15" viewBox="0 0 48 48"><rect x="6" y="12" width="36" height="24" rx="6" fill="#4a5568" stroke="#2b3446" /></svg>
               Play my games
             </button>
@@ -308,6 +308,86 @@ export function ProjectsContent() {
                     ) : (
                       <span className="project-private">Private client project</span>
                     )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function ItchGamesContent() {
+  const openExternal = (url) => window.open(url, "_blank", "noopener,noreferrer");
+  return (
+    <div className="explorer-split">
+      <aside className="explorer-side xp-scroll">
+        <div className="side-panel">
+          <div className="side-panel-head">File and Folder Tasks</div>
+          <div className="side-panel-body">
+            <button className="side-link" onClick={() => openExternal("https://gregrsea-975.itch.io")}>
+              <svg width="15" height="15" viewBox="0 0 48 48"><rect x="6" y="12" width="36" height="24" rx="6" fill="#4a5568" stroke="#2b3446" /></svg>
+              Open my itch.io profile
+            </button>
+            <button className="side-link" onClick={() => openExternal("https://github.com/Rafiadnan0666")}>
+              <svg width="15" height="15" viewBox="0 0 48 48"><path d="M4 10 h14 l4 5 h22 v25 a2 2 0 0 1 -2 2 H6 a2 2 0 0 1 -2 -2 Z" fill="#f7c94b" stroke="#c98a10" /></svg>
+              Visit my GitHub
+            </button>
+            <button className="side-link" onClick={() => openExternal("https://rafiadnan.my.id")}>
+              <svg width="15" height="15" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="#2f8fe0" stroke="#1b5fa8" /></svg>
+              Open my website
+            </button>
+          </div>
+        </div>
+        <div className="side-panel">
+          <div className="side-panel-head">Details</div>
+          <div className="side-panel-body">
+            <p className="side-detail">
+              <b>{ITCH_GAMES.length} published games</b><br />
+              Gregrsea 975 · itch.io<br />
+              Indie games · Web & Unity<br />
+              Indonesia<br />
+              <br />
+              Tags: RPG · Action · Simulation · Puzzle
+            </p>
+          </div>
+        </div>
+      </aside>
+
+      <div className="explorer-main">
+        <div className="xp-menubar">
+          {["File", "Edit", "View", "Favorites", "Tools", "Help"].map((m) => (
+            <span key={m} className="xp-menu-item">{m}</span>
+          ))}
+        </div>
+        <div className="addressbar">
+          <span style={{ fontSize: 11 }}>Address</span>
+          <div className="addr-box">
+            <svg width="13" height="13" viewBox="0 0 48 48"><path d="M4 10 h14 l4 5 h22 v25 a2 2 0 0 1 -2 2 H6 a2 2 0 0 1 -2 -2 Z" fill="#f7c94b" stroke="#c98a10" /></svg>
+            <span>C:\Documents and Settings\Rafi\My Games</span>
+          </div>
+          <button className="go-btn" onClick={() => openExternal("https://gregrsea-975.itch.io")}>Go</button>
+        </div>
+        <div className="projects-scroll xp-scroll">
+          <div className="projects-grid">
+            {ITCH_GAMES.map((g) => (
+              <div key={g.title} className="project-card">
+                <div className="project-image-container">
+                  <img src={g.img} alt={g.title} loading="lazy" />
+                  <span className="project-live-dot" style={{ background: "#d00", padding: "2px 5px" }}>PLAY NOW</span>
+                </div>
+                <div className="project-info">
+                  <h3>{g.title}</h3>
+                  <p>{g.desc}</p>
+                  <div className="proj-tags">
+                    {g.tags.map((t) => (
+                      <span key={t} className="proj-tag">{t}</span>
+                    ))}
+                  </div>
+                  <div className="project-links-row">
+                    <a className="project-link" href={g.link} target="_blank" rel="noopener noreferrer">itch.io Page</a>
                   </div>
                 </div>
               </div>

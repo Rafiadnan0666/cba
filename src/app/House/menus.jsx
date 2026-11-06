@@ -8,8 +8,8 @@ export function PowerScreen({ onStart }) {
     <div className="power-screen" onClick={onStart}>
       <div className="retro-rig">
         <div className="retro-rig-top">
-          <span className="retro-brand">RAFIOS</span>
-          <span className="retro-model">MODEL XP-2003</span>
+          <span className="retro-brand">WINDOWS</span>
+          <span className="retro-model">PRODUCTIVITY EDITION</span>
         </div>
 
         <div className="retro-drive-row">
@@ -26,7 +26,7 @@ export function PowerScreen({ onStart }) {
         <div className="retro-badge-row">
           <span className="retro-badge">PENTIUM III</span>
           <span className="retro-badge">128 MB RAM</span>
-          <span className="retro-badge">56K READY</span>
+          <span className="retro-badge">56K MODEM</span>
         </div>
 
         <div className="retro-vent-row" aria-hidden="true">
@@ -46,10 +46,12 @@ export function PowerScreen({ onStart }) {
               onStart();
             }}
           >
-            <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3 a1.6 1.6 0 0 1 1.6 1.6 v7 a1.6 1.6 0 0 1 -3.2 0 v-7 A1.6 1.6 0 0 1 12 3 Z M6.3 6.9 a1.6 1.6 0 0 1 0 2.26 a7 7 0 1 0 11.4 0 a1.6 1.6 0 1 1 2.26 -2.26 a10.2 10.2 0 1 1 -15.92 0 a1.6 1.6 0 0 1 2.26 0 Z" />
-            </svg>
-            <span>POWER</span>
+            <div className="retro-power-btn-face">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3 a1.6 1.6 0 0 1 1.6 1.6 v7 a1.6 1.6 0 0 1 -3.2 0 v-7 A1.6 1.6 0 0 1 12 3 Z M6.3 6.9 a1.6 1.6 0 0 1 0 2.26 a7 7 0 1 0 11.4 0 a1.6 1.6 0 1 1 2.26 -2.26 a10.2 10.2 0 1 1 -15.92 0 a1.6 1.6 0 0 1 2.26 0 Z" />
+              </svg>
+            </div>
+            <span className="retro-power-label">POWER</span>
           </button>
 
           <div className="retro-led-group" aria-hidden="true">
@@ -63,12 +65,12 @@ export function PowerScreen({ onStart }) {
           </div>
         </div>
 
-        <div className="retro-foot">RAFIOS BIOS v2.06 · 2003</div>
+        <div className="retro-foot">BIOS DATE 08/20/03</div>
       </div>
 
       <div className="power-text">PRESS THE POWER BUTTON</div>
       <div className="power-subtext">CRT warming up · click anywhere or hit Enter</div>
-      <div className="power-footer">© 2003 RAFISOFT · HAND-BUILT WITH NEXT.JS</div>
+      <div className="power-footer">© 2003 RAFI ADNAN · HAND-BUILT WITH NEXT.JS</div>
     </div>
   );
 }

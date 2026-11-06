@@ -1,6 +1,9 @@
 ﻿export const AVATAR =
   "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/5807b862bf1790ac6b1f82ab75d1be73-1743593947676/af264c2c-8fbc-4003-a5b3-d0b46292c8f8.png";
 
+export const PROFILE_AVATAR =
+  "/shots/profile-avatar.jpg";
+
 export const GITHUB_STATS = {
   repos: 66,
   publicRepos: 38,
